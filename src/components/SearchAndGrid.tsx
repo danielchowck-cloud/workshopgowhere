@@ -6,14 +6,16 @@ import { searchListings } from "@/lib/search";
 import { Card } from "./Card";
 
 const SUGGESTIONS = [
-  "pottery near tampines",
-  "weekend cooking class",
-  "art jamming for kids",
-  "calligraphy workshop",
-  "free workshops",
-  "couples activity",
-  "woodwork weekend",
-  "fitness for seniors",
+  "engine rattling",
+  "check engine light",
+  "brake squeaking",
+  "aircon not cold",
+  "tyre puncture",
+  "battery dead",
+  "wheel alignment",
+  "transmission slipping",
+  "VICOM inspection",
+  "Tesla service",
 ];
 
 export function SearchAndGrid() {
@@ -23,7 +25,7 @@ export function SearchAndGrid() {
 
   const results = useMemo(() => {
     let r = q ? searchListings(listings, q) : listings;
-    if (activeCat) r = r.filter((l) => l.category === activeCat);
+    if (activeCat) r = r.filter((l) => l.category === activeCat || l.specialties.includes(activeCat));
     if (activeRegion) r = r.filter((l) => l.region === activeRegion);
     return r;
   }, [q, activeCat, activeRegion]);
@@ -36,7 +38,7 @@ export function SearchAndGrid() {
             type="text"
             value={q}
             onChange={(e) => setQ(e.target.value)}
-            placeholder="Try: pottery near tampines, weekend art for kids, free workshops…"
+            placeholder="Describe your car problem: engine rattling, check engine light, brake squeaking…"
             className="w-full rounded-2xl border border-neutral-300 bg-white px-5 py-4 text-base outline-none ring-orange-300 focus:ring-2 dark:border-neutral-700 dark:bg-neutral-900"
             autoFocus
           />
@@ -71,7 +73,7 @@ export function SearchAndGrid() {
             onClick={() => setActiveCat(null)}
             className={`rounded-full border px-3 py-1 text-xs ${activeCat === null ? "border-orange-500 bg-orange-500 text-white" : "border-neutral-300 hover:border-orange-300 dark:border-neutral-700"}`}
           >
-            All categories
+            All specialties
           </button>
           {Object.entries(CATEGORIES).map(([slug, c]) => (
             <button
@@ -102,7 +104,7 @@ export function SearchAndGrid() {
         </div>
         <p className="mb-4 text-sm text-neutral-600 dark:text-neutral-400">
           {results.length === 0
-            ? "Nothing matched. Try fewer keywords or a different category."
+            ? "Nothing matched. Try fewer keywords or a different specialty."
             : `${results.length} ${results.length === 1 ? "workshop" : "workshops"} found`}
         </p>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

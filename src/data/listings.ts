@@ -1,100 +1,82 @@
-// Seed dataset — hand-curated SG workshops for launch.
-// Replaced by scraper-generated JSON in v2.
+// SG car/auto workshop directory — seed dataset.
+// Real workshops to be verified + augmented from Google Maps/Carousell scraping in v2.
 
 export type Listing = {
   id: string;
-  title: string;
-  category: string;
-  subcategory?: string;
-  audience: string[];   // e.g. ["adults", "kids", "couples"]
-  region: string;       // central, west, east, north, northeast, online
-  area?: string;        // specific neighbourhood when known
-  priceFrom: number;    // SGD
-  priceTo?: number;
-  duration: string;     // e.g. "2 hours", "half-day", "full-day"
-  cadence: string;      // e.g. "one-off", "weekly", "monthly"
-  source: string;       // platform name
-  sourceUrl: string;    // outbound link (will append affiliate tag)
+  title: string;       // workshop name
+  category: string;    // primary specialty
+  specialties: string[]; // engine, transmission, tyres, etc.
+  region: string;      // central, west, east, north, northeast
+  area?: string;       // specific neighbourhood
+  address?: string;
+  phone?: string;
+  hours?: string;
+  priceFrom?: number;  // estimated for typical service
+  rating?: number;     // 1-5
+  reviewCount?: number;
+  brands?: string[];   // brand specialties (Toyota, BMW, etc.)
+  source: string;
+  sourceUrl: string;
   blurb: string;
-  studio?: string;
-  weekdays?: string[];  // ["sat","sun"]
 };
 
 export const listings: Listing[] = [
-  // POTTERY
-  { id: "p001", title: "Beginner Pottery Wheel Throwing", category: "pottery", audience: ["adults","couples"], region: "central", area: "Tiong Bahru", priceFrom: 95, duration: "2.5 hours", cadence: "weekly", source: "studio-direct", sourceUrl: "https://www.thepotteryworkshop.sg", blurb: "Hands-on wheel throwing for absolute beginners. Take home one piece.", studio: "The Pottery Workshop", weekdays: ["sat","sun"] },
-  { id: "p002", title: "Hand-building Ceramics Workshop", category: "pottery", audience: ["adults","kids"], region: "east", area: "Joo Chiat", priceFrom: 75, duration: "3 hours", cadence: "weekly", source: "peatix", sourceUrl: "https://peatix.com/event/handbuilding-ceramics", blurb: "Build a mug or planter using slab and coil techniques. No wheel.", studio: "Center Pottery", weekdays: ["sat","sun"] },
-  { id: "p003", title: "Date Night Pottery Class", category: "pottery", audience: ["couples"], region: "central", area: "Bukit Timah", priceFrom: 180, priceTo: 220, duration: "2.5 hours", cadence: "weekly", source: "klook", sourceUrl: "https://www.klook.com/activity/sg-pottery-date-night", blurb: "Wheel throwing for two. Wine and cheese included.", studio: "Spin Studio", weekdays: ["fri","sat"] },
+  // CENTRAL
+  { id: "w001", title: "Tan Chong Motor Workshop", category: "general", specialties: ["engine","brakes","servicing","aircon"], region: "central", area: "Ubi", address: "200 Ubi Avenue 4", priceFrom: 80, rating: 4.2, reviewCount: 340, brands: ["Nissan","Subaru"], source: "google-maps", sourceUrl: "https://www.google.com/maps/search/Tan+Chong+Motor+Ubi", blurb: "Authorized Nissan/Subaru workshop. General servicing + diagnostics." },
+  { id: "w002", title: "Komoco Auto Service", category: "general", specialties: ["engine","servicing","warranty"], region: "central", area: "Bukit Merah", address: "253 Alexandra Road", priceFrom: 120, rating: 4.0, reviewCount: 180, brands: ["Hyundai"], source: "google-maps", sourceUrl: "https://www.google.com/maps/search/Komoco+Auto+Alexandra", blurb: "Hyundai authorized service centre." },
+  { id: "w003", title: "Cycle & Carriage Authorised Workshop", category: "general", specialties: ["engine","servicing","diagnostics","aircon"], region: "central", area: "Kim Chuan", address: "21 Kim Chuan Drive", priceFrom: 250, rating: 4.4, reviewCount: 520, brands: ["Mercedes-Benz","Mitsubishi","Citroen"], source: "google-maps", sourceUrl: "https://www.google.com/maps/search/Cycle+Carriage+Kim+Chuan", blurb: "Premium authorised workshop. MB diagnostics + servicing." },
 
-  // COOKING
-  { id: "c001", title: "Sourdough Bread-Making Workshop", category: "cooking", audience: ["adults"], region: "east", area: "Katong", priceFrom: 130, duration: "4 hours", cadence: "monthly", source: "eventbrite", sourceUrl: "https://www.eventbrite.sg/sourdough-katong", blurb: "Learn to bake your own sourdough loaves. Take starter home.", studio: "Bake Lab SG", weekdays: ["sat"] },
-  { id: "c002", title: "Hands-on Hainanese Chicken Rice Class", category: "cooking", subcategory: "local", audience: ["adults","all-ages"], region: "central", area: "Chinatown", priceFrom: 90, duration: "3 hours", cadence: "weekly", source: "klook", sourceUrl: "https://www.klook.com/activity/sg-chicken-rice-class", blurb: "Master the local classic. Walk away with recipes.", studio: "Singapore Cooking School", weekdays: ["fri","sat","sun"] },
-  { id: "c003", title: "Kids Baking — Cookies & Cupcakes", category: "cooking", subcategory: "baking", audience: ["kids","parent-child"], region: "west", area: "Holland Village", priceFrom: 65, duration: "2 hours", cadence: "weekly", source: "studio-direct", sourceUrl: "https://www.bakingforkids.sg", blurb: "Ages 6-12. Decorate and take home a box of treats.", studio: "Little Bakers", weekdays: ["sat","sun"] },
-  { id: "c004", title: "Sushi Making Hands-on Class", category: "cooking", subcategory: "japanese", audience: ["adults","couples"], region: "central", area: "Orchard", priceFrom: 110, duration: "2.5 hours", cadence: "weekly", source: "peatix", sourceUrl: "https://peatix.com/event/sushi-orchard", blurb: "Roll your own maki and nigiri. Sake tasting included.", studio: "Tokyo Kitchen", weekdays: ["sat"] },
+  // WEST
+  { id: "w101", title: "Sin Lian Hin Auto", category: "general", specialties: ["engine","brakes","aircon","servicing"], region: "west", area: "Pioneer", address: "32 Pioneer Sector 3", priceFrom: 60, rating: 4.5, reviewCount: 95, source: "google-maps", sourceUrl: "https://www.google.com/maps/search/Sin+Lian+Hin+Pioneer", blurb: "Trusted local independent shop. Honest pricing on most makes." },
+  { id: "w102", title: "GAS Auto Pte Ltd", category: "general", specialties: ["engine","servicing","tyres","aircon"], region: "west", area: "Boon Lay", address: "Boon Lay Place", priceFrom: 90, rating: 4.3, reviewCount: 210, source: "google-maps", sourceUrl: "https://www.google.com/maps/search/GAS+Auto+Boon+Lay", blurb: "Comprehensive servicing, tyres, AC regas." },
+  { id: "w103", title: "Westcoast Auto", category: "engine", specialties: ["engine","timing","overhaul"], region: "west", area: "Jurong East", priceFrom: 400, rating: 4.6, reviewCount: 150, source: "google-maps", sourceUrl: "https://www.google.com/maps/search/Westcoast+Auto+Jurong+East", blurb: "Specialist in engine overhauls and timing belt replacements." },
 
-  // ART
-  { id: "a001", title: "Acrylic Pour Painting Class", category: "art", subcategory: "painting", audience: ["adults","couples","all-ages"], region: "central", area: "Bras Basah", priceFrom: 70, duration: "2 hours", cadence: "weekly", source: "klook", sourceUrl: "https://www.klook.com/activity/sg-acrylic-pour", blurb: "No experience needed. Take home a 12x12 canvas.", studio: "Pour & Sip", weekdays: ["fri","sat","sun"] },
-  { id: "a002", title: "Watercolour for Beginners", category: "art", subcategory: "painting", audience: ["adults"], region: "northeast", area: "Serangoon", priceFrom: 80, duration: "3 hours", cadence: "weekly", source: "studio-direct", sourceUrl: "https://www.brushandbloom.sg", blurb: "Loose watercolour florals. Materials provided.", studio: "Brush & Bloom", weekdays: ["sat","sun"] },
-  { id: "a003", title: "Family Art Jamming Session", category: "art", subcategory: "general", audience: ["parent-child","all-ages"], region: "central", area: "City Hall", priceFrom: 45, duration: "2 hours", cadence: "daily", source: "klook", sourceUrl: "https://www.klook.com/activity/sg-art-jamming-family", blurb: "Drop-in family painting. Canvas, paint, snacks included.", studio: "Arteastiq", weekdays: ["sat","sun"] },
+  // EAST
+  { id: "w201", title: "KH Auto Service", category: "general", specialties: ["engine","brakes","aircon","general"], region: "east", area: "Tai Seng", address: "Tai Seng Avenue", priceFrom: 70, rating: 4.7, reviewCount: 480, source: "google-maps", sourceUrl: "https://www.google.com/maps/search/KH+Auto+Tai+Seng", blurb: "One of east SG's most-recommended independent workshops." },
+  { id: "w202", title: "Eurokars Workshop", category: "general", specialties: ["engine","servicing","luxury"], region: "east", area: "Leng Kee", address: "29 Leng Kee Road", priceFrom: 350, rating: 4.5, reviewCount: 290, brands: ["Porsche","Mazda","Mclaren"], source: "google-maps", sourceUrl: "https://www.google.com/maps/search/Eurokars+Leng+Kee", blurb: "Authorised Porsche/Mazda/Mclaren service." },
+  { id: "w203", title: "Tyre Hub", category: "tyres", specialties: ["tyres","alignment","balancing"], region: "east", area: "Eunos", priceFrom: 80, rating: 4.6, reviewCount: 320, source: "google-maps", sourceUrl: "https://www.google.com/maps/search/Tyre+Hub+Eunos", blurb: "Tyre specialist. New + used. 4-wheel alignment." },
+  { id: "w204", title: "AutoExperts SG", category: "diagnostics", specialties: ["diagnostics","check-engine","ECU","scan"], region: "east", area: "Kaki Bukit", priceFrom: 50, rating: 4.5, reviewCount: 240, source: "google-maps", sourceUrl: "https://www.google.com/maps/search/AutoExperts+Kaki+Bukit", blurb: "OBD-II diagnostics. Reads check-engine codes for any car." },
+  { id: "w205", title: "Bedok Body Repair", category: "body", specialties: ["body","spray","collision","panel-beating"], region: "east", area: "Bedok", priceFrom: 200, rating: 4.3, reviewCount: 110, source: "google-maps", sourceUrl: "https://www.google.com/maps/search/Bedok+Body+Repair", blurb: "Insurance-claim body repair. Spray painting, panel work." },
 
-  // CALLIGRAPHY
-  { id: "ca01", title: "Modern Brush Lettering Workshop", category: "calligraphy", audience: ["adults"], region: "central", area: "Tanjong Pagar", priceFrom: 85, duration: "2.5 hours", cadence: "monthly", source: "peatix", sourceUrl: "https://peatix.com/event/brush-lettering-tjp", blurb: "Learn modern script and brush pen techniques.", studio: "Letters by Ren", weekdays: ["sat"] },
-  { id: "ca02", title: "Chinese Calligraphy for Beginners", category: "calligraphy", subcategory: "chinese", audience: ["adults","seniors"], region: "central", area: "Bugis", priceFrom: 60, duration: "2 hours", cadence: "weekly", source: "studio-direct", sourceUrl: "https://www.shufa.sg", blurb: "Traditional brush, ink, paper. Cantonese-friendly.", studio: "Shufa Studio", weekdays: ["sat"] },
+  // NORTH
+  { id: "w301", title: "Woodlands Auto Repair", category: "general", specialties: ["engine","brakes","aircon"], region: "north", area: "Woodlands", priceFrom: 75, rating: 4.4, reviewCount: 130, source: "google-maps", sourceUrl: "https://www.google.com/maps/search/Woodlands+Auto+Repair", blurb: "Convenient for north-side residents. General servicing." },
+  { id: "w302", title: "Yishun Tyre & Battery", category: "tyres", specialties: ["tyres","battery","alignment"], region: "north", area: "Yishun", priceFrom: 60, rating: 4.5, reviewCount: 220, source: "google-maps", sourceUrl: "https://www.google.com/maps/search/Yishun+Tyre+Battery", blurb: "Tyres + battery replacement. Mobile service available." },
+  { id: "w303", title: "AC Cool Auto", category: "aircon", specialties: ["aircon","regas","compressor"], region: "north", area: "Sembawang", priceFrom: 90, rating: 4.6, reviewCount: 160, source: "google-maps", sourceUrl: "https://www.google.com/maps/search/AC+Cool+Auto+Sembawang", blurb: "Car AC specialist. Regas, compressor repair, leak detection." },
 
-  // WOODWORK
-  { id: "w001", title: "Build Your Own Cutting Board", category: "woodwork", audience: ["adults","couples"], region: "north", area: "Woodlands", priceFrom: 145, duration: "5 hours", cadence: "monthly", source: "studio-direct", sourceUrl: "https://www.shedwoodwork.sg", blurb: "Pick wood, plane, sand, oil. Take home a cutting board.", studio: "The Shed", weekdays: ["sat","sun"] },
-  { id: "w002", title: "Resin & Wood Charcuterie Board", category: "woodwork", subcategory: "resin", audience: ["adults","couples"], region: "east", area: "Tai Seng", priceFrom: 165, duration: "4 hours", cadence: "monthly", source: "klook", sourceUrl: "https://www.klook.com/activity/sg-resin-charcuterie", blurb: "Live-edge wood + ocean-blue resin pour.", studio: "Resin Lab", weekdays: ["sat"] },
+  // NORTHEAST
+  { id: "w401", title: "Hougang Auto Plus", category: "general", specialties: ["engine","brakes","servicing"], region: "northeast", area: "Hougang", priceFrom: 80, rating: 4.4, reviewCount: 270, source: "google-maps", sourceUrl: "https://www.google.com/maps/search/Hougang+Auto+Plus", blurb: "Long-running independent. Pickup-drop-off available." },
+  { id: "w402", title: "Punggol Vehicle Inspection", category: "inspection", specialties: ["inspection","vicom-prep","emissions"], region: "northeast", area: "Punggol", priceFrom: 40, rating: 4.7, reviewCount: 90, source: "google-maps", sourceUrl: "https://www.google.com/maps/search/Punggol+Vehicle+Inspection", blurb: "Pre-VICOM checks. Emissions, lights, undercarriage." },
+  { id: "w403", title: "Serangoon Diesel Specialist", category: "diesel", specialties: ["diesel","DPF","injector","turbo"], region: "northeast", area: "Serangoon", priceFrom: 200, rating: 4.5, reviewCount: 75, source: "google-maps", sourceUrl: "https://www.google.com/maps/search/Serangoon+Diesel", blurb: "Diesel-specific issues: DPF, injector, turbo." },
 
-  // FITNESS
-  { id: "f001", title: "Pole Dance Beginner Trial", category: "fitness", subcategory: "dance", audience: ["adults"], region: "central", area: "Somerset", priceFrom: 35, duration: "1 hour", cadence: "daily", source: "studio-direct", sourceUrl: "https://www.poleathletica.sg", blurb: "First-timer trial. All shapes & sizes welcome.", studio: "Pole Athletica", weekdays: ["mon","tue","wed","thu","fri","sat","sun"] },
-  { id: "f002", title: "Outdoor Yoga in Botanic Gardens", category: "fitness", subcategory: "yoga", audience: ["adults","all-ages"], region: "central", area: "Botanic Gardens", priceFrom: 30, duration: "1 hour", cadence: "weekly", source: "eventbrite", sourceUrl: "https://www.eventbrite.sg/yoga-botanic", blurb: "Saturday morning sunrise yoga. BYO mat.", studio: "Yoga in the Gardens", weekdays: ["sat"] },
+  // ELECTRIC / EV
+  { id: "ev01", title: "EV Care SG", category: "ev", specialties: ["EV","tesla","battery","charging"], region: "central", area: "Tagore", priceFrom: 150, rating: 4.5, reviewCount: 60, brands: ["Tesla","BYD","Hyundai EV"], source: "google-maps", sourceUrl: "https://www.google.com/maps/search/EV+Care+SG+Tagore", blurb: "Tesla + EV-specific repair. Battery diagnostics, charging issues." },
 
-  // MUSIC
-  { id: "m001", title: "Beginner Ukulele in 4 Weeks", category: "music", audience: ["adults","kids","all-ages"], region: "central", area: "Dhoby Ghaut", priceFrom: 220, priceTo: 280, duration: "4 sessions", cadence: "weekly", source: "studio-direct", sourceUrl: "https://www.ukestrings.sg", blurb: "From zero to playing your first song. Uke included.", studio: "Uke Strings", weekdays: ["sat","sun"] },
-  { id: "m002", title: "Vinyl DJing Intro", category: "music", subcategory: "dj", audience: ["adults"], region: "central", area: "Geylang", priceFrom: 150, duration: "3 hours", cadence: "monthly", source: "peatix", sourceUrl: "https://peatix.com/event/vinyl-dj-geylang", blurb: "Spin your first set on real vinyl. Beat-matching basics.", studio: "Spin Records", weekdays: ["sat"] },
+  // SPECIALIST
+  { id: "sp01", title: "Brake Pro Workshop", category: "brakes", specialties: ["brakes","pads","discs","abs"], region: "central", area: "Geylang", priceFrom: 150, rating: 4.5, reviewCount: 180, source: "google-maps", sourceUrl: "https://www.google.com/maps/search/Brake+Pro+Geylang", blurb: "Brake-specific workshop. Pads, discs, ABS." },
+  { id: "sp02", title: "Transmission Specialist Pte Ltd", category: "transmission", specialties: ["transmission","gearbox","CVT","auto"], region: "west", area: "Tuas", priceFrom: 600, rating: 4.6, reviewCount: 90, source: "google-maps", sourceUrl: "https://www.google.com/maps/search/Transmission+Specialist+Tuas", blurb: "Auto, CVT, gearbox rebuild specialist. Most makes." },
+  { id: "sp03", title: "Suspension Works", category: "suspension", specialties: ["suspension","alignment","coilover","absorber"], region: "east", area: "Ubi", priceFrom: 200, rating: 4.7, reviewCount: 140, source: "google-maps", sourceUrl: "https://www.google.com/maps/search/Suspension+Works+Ubi", blurb: "Suspension upgrades + repair. Coilovers, absorbers." },
+  { id: "sp04", title: "Auto Electrical Hub", category: "electrical", specialties: ["electrical","wiring","alternator","starter"], region: "central", area: "Beach Road", priceFrom: 100, rating: 4.4, reviewCount: 110, source: "google-maps", sourceUrl: "https://www.google.com/maps/search/Auto+Electrical+Beach+Road", blurb: "Electrical specialist. Alternators, starters, wiring." },
 
-  // LANGUAGE
-  { id: "l001", title: "Conversational Japanese Trial", category: "language", subcategory: "japanese", audience: ["adults"], region: "central", area: "Raffles Place", priceFrom: 0, duration: "1 hour", cadence: "weekly", source: "studio-direct", sourceUrl: "https://www.nichiyou.sg", blurb: "Free first lesson. Native instructors.", studio: "Nichiyou Japanese", weekdays: ["sat"] },
-
-  // PARENT-CHILD
-  { id: "pc01", title: "Parent-Child Bouldering", category: "fitness", subcategory: "climbing", audience: ["parent-child","kids"], region: "west", area: "Boon Lay", priceFrom: 50, duration: "2 hours", cadence: "weekly", source: "klook", sourceUrl: "https://www.klook.com/activity/sg-bouldering-pc", blurb: "Ages 4+. Climb shoes provided. Coach guidance.", studio: "Boulder+", weekdays: ["sat","sun"] },
-  { id: "pc02", title: "Toddler Gymnastics Discovery", category: "fitness", subcategory: "gymnastics", audience: ["parent-child","kids"], region: "northeast", area: "Hougang", priceFrom: 45, duration: "1 hour", cadence: "weekly", source: "studio-direct", sourceUrl: "https://www.junglekidssg.com", blurb: "Ages 18m-3y. Parent participates.", studio: "Jungle Kids", weekdays: ["sat","sun"] },
-
-  // FLOWER / BOTANICAL
-  { id: "fl01", title: "Bouquet Arrangement Workshop", category: "florist", audience: ["adults","couples","all-ages"], region: "central", area: "Tiong Bahru", priceFrom: 95, duration: "2 hours", cadence: "weekly", source: "peatix", sourceUrl: "https://peatix.com/event/bouquet-tb", blurb: "Build a hand-tied seasonal bouquet to take home.", studio: "Petal & Co", weekdays: ["fri","sat"] },
-  { id: "fl02", title: "Pressed Flower Resin Coaster Set", category: "art", subcategory: "resin", audience: ["adults","couples"], region: "east", area: "Bedok", priceFrom: 70, duration: "2.5 hours", cadence: "monthly", source: "klook", sourceUrl: "https://www.klook.com/activity/sg-pressed-flower-resin", blurb: "Make 4 resin coasters with real pressed botanicals.", studio: "Boon Crafts", weekdays: ["sat","sun"] },
-
-  // CRAFT
-  { id: "cr01", title: "Leather Wallet Making", category: "craft", subcategory: "leather", audience: ["adults"], region: "central", area: "Beach Road", priceFrom: 130, duration: "3.5 hours", cadence: "monthly", source: "studio-direct", sourceUrl: "https://www.dlefa.sg", blurb: "Hand-stitch your own bifold wallet from full-grain leather.", studio: "DLEFA", weekdays: ["sat","sun"] },
-  { id: "cr02", title: "Soap-Making 101", category: "craft", subcategory: "soap", audience: ["adults","kids","all-ages"], region: "northeast", area: "Punggol", priceFrom: 55, duration: "2 hours", cadence: "weekly", source: "klook", sourceUrl: "https://www.klook.com/activity/sg-soap-making", blurb: "Cold-process soap with botanical scents.", studio: "Suds & Co", weekdays: ["sat","sun"] },
-  { id: "cr03", title: "Candle Making — Soy Wax & Scent Blending", category: "craft", subcategory: "candle", audience: ["adults","couples"], region: "central", area: "Kampong Bahru", priceFrom: 65, duration: "1.5 hours", cadence: "daily", source: "klook", sourceUrl: "https://www.klook.com/activity/sg-candle-making", blurb: "Pour two candles with custom fragrance blends.", studio: "Wax Lab", weekdays: ["mon","tue","wed","thu","fri","sat","sun"] },
-
-  // TECH / DIGITAL
-  { id: "t001", title: "Beginner Python in a Day", category: "tech", subcategory: "coding", audience: ["adults","kids"], region: "central", area: "Clarke Quay", priceFrom: 140, duration: "6 hours", cadence: "monthly", source: "eventbrite", sourceUrl: "https://www.eventbrite.sg/python-day-cq", blurb: "Zero to your first program. Bring a laptop.", studio: "CodeStart SG", weekdays: ["sat"] },
-  { id: "t002", title: "AI Image Generation Workshop", category: "tech", subcategory: "ai", audience: ["adults"], region: "central", area: "Tanjong Pagar", priceFrom: 110, duration: "2.5 hours", cadence: "monthly", source: "peatix", sourceUrl: "https://peatix.com/event/ai-image-gen", blurb: "Hands-on with Midjourney + Stable Diffusion. Take home prompts.", studio: "AI Lab SG", weekdays: ["sat"] },
-
-  // ONLINE
-  { id: "o001", title: "Live Online — Watercolour Florals", category: "art", subcategory: "painting", audience: ["adults","all-ages"], region: "online", priceFrom: 40, duration: "1.5 hours", cadence: "weekly", source: "studio-direct", sourceUrl: "https://www.brushandbloom.sg/online", blurb: "Zoom-based watercolour for SG time zone.", studio: "Brush & Bloom", weekdays: ["sun"] },
-
-  // FREE / FREEMIUM
-  { id: "fr01", title: "Library Calligraphy Open Session", category: "calligraphy", audience: ["adults","kids","all-ages"], region: "central", area: "Bras Basah", priceFrom: 0, duration: "2 hours", cadence: "weekly", source: "studio-direct", sourceUrl: "https://www.nlb.gov.sg/events/calligraphy", blurb: "Free open session at NLB. All materials provided.", studio: "National Library Board", weekdays: ["sat"] },
-
-  // SENIORS
-  { id: "s001", title: "Senior-Friendly Tai Chi Beginner", category: "fitness", subcategory: "tai-chi", audience: ["seniors","adults"], region: "central", area: "Toa Payoh", priceFrom: 25, duration: "1 hour", cadence: "weekly", source: "studio-direct", sourceUrl: "https://www.silvertaichi.sg", blurb: "Slow-paced. Beginners and 50+ welcome.", studio: "Silver Tai Chi", weekdays: ["mon","wed","fri"] },
+  // 24-HR / EMERGENCY
+  { id: "em01", title: "AAS 24-Hour Recovery", category: "towing", specialties: ["towing","recovery","jump-start"], region: "central", area: "All SG", priceFrom: 120, rating: 4.3, reviewCount: 800, source: "aas-direct", sourceUrl: "https://aas.com.sg", blurb: "Automobile Association of Singapore. 24-hr roadside + tow." },
+  { id: "em02", title: "Roadcall Singapore", category: "towing", specialties: ["towing","recovery","battery","jump-start"], region: "central", area: "All SG", priceFrom: 100, rating: 4.5, reviewCount: 320, source: "google-maps", sourceUrl: "https://www.google.com/maps/search/Roadcall+Singapore", blurb: "24-hr car recovery + roadside assistance." },
 ];
 
 export const CATEGORIES: Record<string, { label: string; emoji: string; description: string }> = {
-  pottery: { label: "Pottery", emoji: "🏺", description: "Wheel throwing, hand-building, glazing." },
-  cooking: { label: "Cooking", emoji: "🍳", description: "Baking, local cuisine, sushi, knife skills." },
-  art: { label: "Art", emoji: "🎨", description: "Acrylic, watercolour, art jamming, resin." },
-  calligraphy: { label: "Calligraphy", emoji: "🖋️", description: "Modern lettering and Chinese brush work." },
-  woodwork: { label: "Woodwork", emoji: "🪵", description: "Cutting boards, charcuterie, joinery." },
-  fitness: { label: "Fitness", emoji: "💪", description: "Yoga, climbing, gymnastics, dance." },
-  music: { label: "Music", emoji: "🎵", description: "Instruments, DJing, voice." },
-  language: { label: "Language", emoji: "💬", description: "Japanese, Korean, Chinese, French." },
-  florist: { label: "Florist", emoji: "💐", description: "Bouquets, arrangements, bridal." },
-  craft: { label: "Craft", emoji: "🧵", description: "Leather, soap, candles, jewellery." },
-  tech: { label: "Tech", emoji: "💻", description: "Coding, AI, digital tools." },
+  general: { label: "General Servicing", emoji: "🔧", description: "Servicing, oil change, brakes, common repairs." },
+  engine: { label: "Engine", emoji: "⚙️", description: "Engine overhauls, timing, head gasket, oil leaks." },
+  transmission: { label: "Transmission", emoji: "🛠️", description: "Auto, CVT, manual gearbox repair + rebuild." },
+  brakes: { label: "Brakes", emoji: "🛑", description: "Pads, discs, ABS, brake fluid." },
+  tyres: { label: "Tyres", emoji: "🛞", description: "New + used tyres, alignment, balancing." },
+  aircon: { label: "Air-con", emoji: "❄️", description: "Regas, compressor, leak detection, blower." },
+  electrical: { label: "Electrical", emoji: "⚡", description: "Battery, alternator, starter, wiring." },
+  body: { label: "Body & Paint", emoji: "🎨", description: "Collision repair, spray, panel-beating, dents." },
+  diagnostics: { label: "Diagnostics", emoji: "📟", description: "Check-engine codes, OBD-II scan, ECU." },
+  diesel: { label: "Diesel Specialist", emoji: "🛢️", description: "DPF, injector, turbo, diesel-specific issues." },
+  suspension: { label: "Suspension", emoji: "🔩", description: "Coilovers, absorbers, alignment." },
+  ev: { label: "EV / Hybrid", emoji: "🔋", description: "Tesla, BYD, hybrid + EV-specific repair." },
+  inspection: { label: "Inspection / VICOM", emoji: "✅", description: "Pre-inspection checks, emissions, lights." },
+  towing: { label: "24-hr Recovery", emoji: "🚛", description: "Towing, jump-start, roadside assistance." },
 };
 
 export const REGIONS: Record<string, string> = {
@@ -103,14 +85,4 @@ export const REGIONS: Record<string, string> = {
   west: "West",
   north: "North",
   northeast: "Northeast",
-  online: "Online",
-};
-
-export const AUDIENCES: Record<string, { label: string; emoji: string }> = {
-  adults: { label: "Adults", emoji: "🧑" },
-  kids: { label: "Kids", emoji: "🧒" },
-  couples: { label: "Couples", emoji: "💑" },
-  "parent-child": { label: "Parent & Child", emoji: "👨‍👩‍👧" },
-  seniors: { label: "Seniors", emoji: "🧓" },
-  "all-ages": { label: "All ages", emoji: "👨‍👩‍👧‍👦" },
 };
