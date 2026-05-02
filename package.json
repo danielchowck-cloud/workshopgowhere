@@ -1,0 +1,30 @@
+{
+  "name": "workshopgowhere",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Singapore workshop / event / class finder. Aggregates workshops from across SG into one searchable interface.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "scrape": "node scripts/scrape-all.mjs",
+    "categorize": "node scripts/categorize.mjs",
+    "build-pages": "node scripts/build-programmatic-seo.mjs"
+  },
+  "dependencies": {
+    "next": "16.2.2",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.2",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
