@@ -24,12 +24,12 @@ export default function AuditQuote() {
         </ol>
       </div>
 
-      <h2 className="mt-12 text-lg font-semibold">v1 — free, manual review</h2>
+      <h2 className="mt-12 text-lg font-semibold">Launch phase — free manual review</h2>
       <p className="mt-2 text-sm text-neutral-700 dark:text-neutral-300">
         During launch we&apos;re reviewing quotes manually (turn-around 1-2 days). Free.
       </p>
 
-      <h2 className="mt-8 text-lg font-semibold">v2 — paid second-opinion ($19-29)</h2>
+      <h2 className="mt-8 text-lg font-semibold">Later — paid second opinion ($19-29)</h2>
       <p className="mt-2 text-sm text-neutral-700 dark:text-neutral-300">
         Eventually a flat-fee detailed audit with a written report from a master tech.
         Pays for itself if we save you $1,000+ on a quote.
