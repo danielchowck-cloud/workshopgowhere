@@ -7,7 +7,7 @@ export const metadata = {
 };
 
 const focusListings = listings.filter((shop) =>
-  shop.brands?.some((brand) => ["Mercedes-Benz", "BMW", "Audi", "Volkswagen", "Porsche", "Volvo", "Tesla"].includes(brand)),
+  shop.brands?.some((brand) => ["Mercedes-Benz", "BMW", "Audi", "Volkswagen", "Porsche", "Volvo", "Tesla", "BYD", "BYD Atto 3", "BYD Sealion"].includes(brand)),
 );
 
 export default function WorkshopsPage() {

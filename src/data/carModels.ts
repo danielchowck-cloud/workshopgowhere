@@ -413,6 +413,124 @@ export const CAR_MODELS: CarModel[] = [
     ],
   },
 
+  // ─────────────── BYD / EV ───────────────
+  {
+    id: "byd-atto-3",
+    brand: "BYD",
+    model: "Atto 3",
+    yearsActive: "2022-present",
+    popularSG: true,
+    searchAliases: ["BYD Atto", "Atto 3", "Atto3", "BYD electric SUV"],
+    commonIssues: [
+      {
+        id: "atto-12v-warning",
+        symptom: "12V battery warning / car cannot start or wake up",
+        severity: "med",
+        diagnosticTip:
+          "For BYD Atto 3 owners, a no-start or wake-up issue is often the small 12V auxiliary battery, not the main EV battery. Check 12V health first before accepting any high-voltage diagnosis. A proper EV workshop should load-test the 12V battery and scan the low-voltage fault history.",
+        likelyFix: "12V auxiliary battery test and replacement if weak",
+        realFixPrice: [180, 350],
+        agentTrapPrice: [600, 1200],
+        trapPercentage: 75,
+        requiredTools: ["EV diagnostic scanner", "12V battery load tester"],
+      },
+      {
+        id: "atto-charging-fault",
+        symptom: "Charging interrupted / cannot charge AC at home charger",
+        severity: "med",
+        diagnosticTip:
+          "Charging faults are often charger, cable, earthing, or software handshake issues before they are onboard-charger failure. Test with another AC charger and cable first, then scan charging module faults. Do not replace the onboard charger without confirming it fails across multiple chargers.",
+        likelyFix: "Charger/cable/earthing check, software reset, then charging module diagnosis",
+        realFixPrice: [80, 450],
+        agentTrapPrice: [1800, 3500],
+        trapPercentage: 65,
+        requiredTools: ["EV diagnostic scanner", "Charging cable tester"],
+      },
+      {
+        id: "atto-aircon-not-cold",
+        symptom: "Aircon not cold / weak cooling in hot weather",
+        severity: "low",
+        diagnosticTip:
+          "On EVs, weak cooling can be refrigerant level, cabin filter restriction, compressor control, or thermal-management software. Start with cabin filter + refrigerant leak check before replacing the electric compressor. Compressor replacement should be the last step, not the first quote.",
+        likelyFix: "Cabin filter, refrigerant leak test, software/thermal-management scan",
+        realFixPrice: [80, 380],
+        agentTrapPrice: [1200, 2500],
+        trapPercentage: 70,
+        requiredTools: ["EV-safe aircon service equipment"],
+      },
+      {
+        id: "atto-adas-camera-warning",
+        symptom: "ADAS / camera / sensor warning after windscreen or bumper work",
+        severity: "low",
+        diagnosticTip:
+          "If the warning appeared after windscreen replacement, bumper repair, or alignment work, calibration is more likely than sensor failure. Ask for calibration proof and fault codes before buying a new camera or radar module.",
+        likelyFix: "ADAS camera/radar calibration and fault-code clear",
+        realFixPrice: [180, 450],
+        agentTrapPrice: [900, 1800],
+        trapPercentage: 70,
+        requiredTools: ["ADAS calibration equipment", "EV diagnostic scanner"],
+      },
+    ],
+  },
+  {
+    id: "byd-sealion",
+    brand: "BYD",
+    model: "Sealion",
+    yearsActive: "2024-present",
+    popularSG: true,
+    searchAliases: ["BYD Sealion", "Sealion 7", "BYD Sealion 7", "BYD electric SUV"],
+    commonIssues: [
+      {
+        id: "sealion-12v-warning",
+        symptom: "12V battery warning / car does not wake up",
+        severity: "med",
+        diagnosticTip:
+          "Even on new EVs, many apparent dead-car problems start with the 12V auxiliary system. Check 12V voltage, DC-DC charging behaviour, and fault history before assuming high-voltage battery failure.",
+        likelyFix: "12V auxiliary system test, battery replacement, DC-DC charging check",
+        realFixPrice: [180, 450],
+        agentTrapPrice: [700, 1500],
+        trapPercentage: 70,
+        requiredTools: ["EV diagnostic scanner", "12V battery load tester"],
+      },
+      {
+        id: "sealion-charging-slow",
+        symptom: "Charging slower than expected / charging stops halfway",
+        severity: "med",
+        diagnosticTip:
+          "Slow or interrupted charging can be charger rating, cable limit, battery temperature, software limit, or handshake error. Confirm charger kW, cable rating, and battery temperature before diagnosing the car as faulty.",
+        likelyFix: "Charging setup check, software update, thermal/charging module scan",
+        realFixPrice: [80, 450],
+        agentTrapPrice: [1500, 3500],
+        trapPercentage: 60,
+        requiredTools: ["EV diagnostic scanner", "Charging cable tester"],
+      },
+      {
+        id: "sealion-tyre-noise-vibration",
+        symptom: "Tyre noise / vibration at highway speed",
+        severity: "low",
+        diagnosticTip:
+          "Heavy EVs are sensitive to tyre wear, balancing, alignment, and uneven pressure. Diagnose tyre condition and wheel balance first before replacing suspension parts. EV torque can make ordinary tyre issues feel like drivetrain problems.",
+        likelyFix: "Tyre inspection, road-force balance, alignment",
+        realFixPrice: [80, 280],
+        agentTrapPrice: [900, 1800],
+        trapPercentage: 65,
+      },
+      {
+        id: "sealion-aircon-weak",
+        symptom: "Aircon weak / cabin takes long to cool",
+        severity: "low",
+        diagnosticTip:
+          "For EVs, aircon performance is tied to thermal management. Check cabin filter, refrigerant, compressor command, and software before replacing major parts. Ask the workshop to show scan data, not just a compressor quote.",
+        likelyFix: "Cabin filter + refrigerant/thermal-management diagnostic",
+        realFixPrice: [80, 400],
+        agentTrapPrice: [1200, 2500],
+        trapPercentage: 65,
+        requiredTools: ["EV-safe aircon service equipment", "EV diagnostic scanner"],
+      },
+    ],
+  },
+
+
   // ─────────────── TESLA ───────────────
   {
     id: "tesla-model-3-y",

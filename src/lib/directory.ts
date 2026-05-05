@@ -49,3 +49,43 @@ export function formatSgd(value: number): string {
 export function formatRange(range: [number, number]): string {
   return `${formatSgd(range[0])}–${formatSgd(range[1])}`;
 }
+
+function cleanSlugPart(value: string): string {
+  return value
+    .toLowerCase()
+    .replace(/mercedes-benz/g, "mercedes")
+    .replace(/&/g, " and ")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+function ownerModelName(model: string): string {
+  if (model.includes("E-Class")) return "E-Class";
+  if (model.includes("C-Class")) return "C-Class";
+  if (model.includes("GLE")) return "GLE";
+  if (model.includes("GLC")) return "GLC";
+  if (model.includes("3-Series")) return "3-Series";
+  if (model.includes("5-Series")) return "5-Series";
+  if (model.includes("A4")) return "A4";
+  if (model.includes("A5")) return "A5";
+  if (model.includes("Cayenne")) return "Cayenne";
+  if (model.includes("Model 3")) return "Model 3 Model Y";
+  return model.replace(/^([A-Z][0-9]{2,3}|F\d+|G\d+|B\d+)\s+/g, "").replace(/\([^)]*\)/g, "").trim();
+}
+
+export function getIssueSeoSlug(issue: IssueWithModel): string {
+  return cleanSlugPart(`${issue.model.brand} ${ownerModelName(issue.model.model)} ${issue.symptom}`)
+    .replace(/car-too-low-airmatic-warning-air-suspension-dropping-overnight/, "air-suspension-drops-overnight")
+    .replace(/air-suspension-dropping-airmatic-warning/, "air-suspension-drops")
+    .replace(/12v-battery-warning-car-cannot-start-or-wake-up/, "12v-battery-warning-cannot-start")
+    .replace(/12v-battery-warning-car-does-not-wake-up/, "12v-battery-warning-cannot-wake-up")
+    .replace(/s-tronic-dsg-jerky-shifting/, "dsg-jerky-shifting");
+}
+
+export function getIssueBySeoSlug(slug: string): IssueWithModel | undefined {
+  return getAllIssues().find((issue) => getIssueSeoSlug(issue) === slug);
+}
+
+export function getIssueSeoTitle(issue: IssueWithModel): string {
+  return `${issue.model.brand.replace("Mercedes-Benz", "Mercedes")} ${ownerModelName(issue.model.model)}: ${issue.symptom}`;
+}
