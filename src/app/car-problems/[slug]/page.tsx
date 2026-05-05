@@ -20,9 +20,23 @@ export default async function CarProblemPage({ params }: { params: Promise<{ slu
   const issue = getIssueBySeoSlug(slug);
   if (!issue) notFound();
   const workshops = getMatchingWorkshops(issue);
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: `${getIssueSeoTitle(issue)} — fair SG repair price`,
+    description: `Guide for Singapore car owners: likely root cause, fair repair range, red-flag quote and proof to ask for before approving repair.`,
+    author: { "@type": "Organization", name: "workshopgowhere" },
+    publisher: { "@type": "Organization", name: "workshopgowhere" },
+    mainEntityOfPage: `https://workshopgowhere.com/car-problems/${getIssueSeoSlug(issue)}`,
+    about: [issue.model.brand, issue.model.model, issue.symptom, issue.likelyFix],
+  };
 
   return (
     <div className="bg-slate-50 text-slate-950 dark:bg-slate-950 dark:text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <section className="border-b border-slate-200 bg-white px-4 py-10 dark:border-slate-800 dark:bg-slate-900">
         <div className="mx-auto max-w-6xl">
           <p className="text-xs font-black uppercase tracking-[0.2em] text-blue-700 dark:text-blue-300">Singapore car repair guide</p>
