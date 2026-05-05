@@ -24,9 +24,32 @@ export default async function WorkshopProfile({ params }: { params: Promise<{ id
   const matchingIssues = getAllIssues().filter((issue) =>
     shop.symptomPrices?.[issue.id] || shop.brands?.includes(issue.model.brand),
   ).slice(0, 8);
+  const canonicalUrl = `https://workshopgowhere.com/workshops/${shop.id}`;
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://workshopgowhere.com" },
+      { "@type": "ListItem", position: 2, name: "Workshops", item: "https://workshopgowhere.com/workshops" },
+      { "@type": "ListItem", position: 3, name: shop.title, item: canonicalUrl },
+    ],
+  };
+  const localBusinessJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "AutoRepair",
+    name: shop.title,
+    url: canonicalUrl,
+    description: shop.blurb,
+    address: shop.address || shop.area || shop.region,
+    areaServed: "Singapore",
+    aggregateRating: shop.rating ? { "@type": "AggregateRating", ratingValue: shop.rating, reviewCount: shop.reviewCount || 1 } : undefined,
+    makesOffer: shop.priceFrom ? { "@type": "Offer", priceCurrency: "SGD", price: shop.priceFrom, description: "Starting diagnostic or repair price guide" } : undefined,
+  };
 
   return (
     <div className="bg-slate-50 px-4 py-12 text-slate-950 dark:bg-slate-950 dark:text-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }} />
       <div className="mx-auto max-w-5xl">
         <a href="/workshops" className="text-sm font-bold text-blue-700 hover:underline dark:text-blue-300">← Back to workshops</a>
         <section className="mt-6 rounded-3xl border border-slate-200 bg-white p-6 shadow-xl dark:border-slate-800 dark:bg-slate-900 sm:p-8">

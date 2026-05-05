@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://workshopgowhere.com"),
   title: "workshopgowhere — Smart Diagnostic Marketplace for European Cars in SG",
   description:
     "Smart symptom search for Mercedes, BMW, Audi, Porsche, Volvo, Tesla owners in Singapore. Pick your model, pick your symptom — get the diagnostic tip + verified specialist + market-fair price. Don't fall for the agent trap.",
@@ -19,6 +20,7 @@ export const metadata: Metadata = {
     "car repair quote auditor",
   ],
   authors: [{ name: "workshopgowhere" }],
+  alternates: { canonical: "/" },
   openGraph: {
     title: "workshopgowhere — Smart Diagnostic Marketplace",
     description:
@@ -29,10 +31,31 @@ export const metadata: Metadata = {
   },
 };
 
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "workshopgowhere",
+  url: "https://workshopgowhere.com",
+  description:
+    "Singapore diagnostic-first car repair guide helping owners identify likely root causes, fair repair prices, red-flag quotes and specialist workshops before approving repairs.",
+  areaServed: { "@type": "Country", name: "Singapore" },
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "customer support",
+    email: "hello@workshopgowhere.com",
+  },
+  sameAs: ["https://workshopgowhere.com"],
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className="min-h-screen bg-slate-50 antialiased dark:bg-slate-950">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
         <header className="border-b border-slate-200 bg-white/80 backdrop-blur-sm dark:border-slate-800 dark:bg-slate-950/80">
           <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
             <a href="/" className="flex items-center gap-2 text-base font-bold tracking-tight text-slate-900 dark:text-slate-100">

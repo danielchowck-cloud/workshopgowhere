@@ -20,6 +20,7 @@ export default async function CarProblemPage({ params }: { params: Promise<{ slu
   const issue = getIssueBySeoSlug(slug);
   if (!issue) notFound();
   const workshops = getMatchingWorkshops(issue);
+  const canonicalUrl = `https://workshopgowhere.com/car-problems/${getIssueSeoSlug(issue)}`;
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -27,8 +28,38 @@ export default async function CarProblemPage({ params }: { params: Promise<{ slu
     description: `Guide for Singapore car owners: likely root cause, fair repair range, red-flag quote and proof to ask for before approving repair.`,
     author: { "@type": "Organization", name: "workshopgowhere" },
     publisher: { "@type": "Organization", name: "workshopgowhere" },
-    mainEntityOfPage: `https://workshopgowhere.com/car-problems/${getIssueSeoSlug(issue)}`,
+    mainEntityOfPage: canonicalUrl,
     about: [issue.model.brand, issue.model.model, issue.symptom, issue.likelyFix],
+  };
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://workshopgowhere.com" },
+      { "@type": "ListItem", position: 2, name: "Car problems", item: "https://workshopgowhere.com/#popular" },
+      { "@type": "ListItem", position: 3, name: getIssueSeoTitle(issue), item: canonicalUrl },
+    ],
+  };
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: `What is the likely fix for ${getIssueSeoTitle(issue)}?`,
+        acceptedAnswer: { "@type": "Answer", text: issue.likelyFix },
+      },
+      {
+        "@type": "Question",
+        name: "What is a fair repair price in Singapore?",
+        acceptedAnswer: { "@type": "Answer", text: `A fair Singapore repair range is ${formatRange(issue.realFixPrice)} based on the common-fix guide on this page.` },
+      },
+      {
+        "@type": "Question",
+        name: "What should I ask the workshop for?",
+        acceptedAnswer: { "@type": "Answer", text: "Ask for diagnostic fault codes, photo or video proof of the failed part, an itemised quote, and an explanation of why cheaper common fixes were ruled out." },
+      },
+    ],
   };
 
   return (
@@ -36,6 +67,14 @@ export default async function CarProblemPage({ params }: { params: Promise<{ slu
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <section className="border-b border-slate-200 bg-white px-4 py-10 dark:border-slate-800 dark:bg-slate-900">
         <div className="mx-auto max-w-6xl">
