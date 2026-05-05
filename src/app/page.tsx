@@ -10,7 +10,7 @@ const brands = ["Mercedes-Benz", "BMW", "Audi", "Porsche", "Volvo", "Tesla"];
 export const metadata = {
   title: "workshopgowhere — Problem-first diagnostic marketplace",
   description:
-    "A problem-first preview of workshopgowhere for Singapore continental car owners.",
+    "Find likely causes, fair repair prices and Singapore specialist workshops for Continental car problems.",
 };
 
 export default function Home() {
@@ -116,7 +116,7 @@ export default function Home() {
             <a
               key={`${model.id}-${issue.id}`}
               id={issue.id}
-              href={`/audit-my-quote`}
+              href={`/issues/${issue.id}`}
               className="group rounded-2xl border border-slate-200 bg-white p-4 transition hover:-translate-y-0.5 hover:border-blue-400 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900 dark:hover:border-blue-500"
             >
               <div className="flex items-start justify-between gap-3">
@@ -214,7 +214,7 @@ export default function Home() {
             </div>
             <div className="grid gap-3 text-sm">
               <a href="/audit-my-quote" className="rounded-xl bg-white px-4 py-3 text-center font-bold text-slate-950 hover:bg-blue-50">Audit my quote</a>
-              <a href="/submit" className="rounded-xl border border-white/20 px-4 py-3 text-center font-bold text-white hover:bg-white/10">List a workshop</a>
+              <a href="/workshops" className="rounded-xl border border-white/20 px-4 py-3 text-center font-bold text-white hover:bg-white/10">Browse workshops</a>
             </div>
           </div>
         </div>
