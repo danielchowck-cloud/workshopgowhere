@@ -289,6 +289,66 @@ export const CAR_MODELS: CarModel[] = [
       },
     ],
   },
+  // ─────────────── VOLVO ───────────────
+  {
+    id: "volvo-xc60-xc90",
+    brand: "Volvo",
+    model: "XC60 / XC90",
+    yearsActive: "2015-present",
+    popularSG: true,
+    searchAliases: ["Volvo XC60", "Volvo XC90", "T5", "T6", "B5", "B6"],
+    commonIssues: [
+      {
+        id: "volvo-aircon-weak",
+        symptom: "Aircon not cold / weak cooling",
+        severity: "low",
+        diagnosticTip:
+          "For Volvo XC60/XC90 in Singapore heat, weak cooling is often refrigerant leak, condenser, cabin filter, or compressor-control issue. Start with leak test and VIDA scan before compressor replacement.",
+        likelyFix: "Leak test, condenser/cabin filter check, refrigerant service",
+        realFixPrice: [150, 700],
+        agentTrapPrice: [1800, 3500],
+        trapPercentage: 75,
+        requiredTools: ["VIDA", "EV-safe aircon service equipment"],
+      },
+      {
+        id: "volvo-engine-mount-vibration",
+        symptom: "Vibration at idle / vibration when shifting to Drive",
+        severity: "low",
+        diagnosticTip:
+          "Volvo idle vibration is commonly engine mount or torque mount wear, not gearbox failure. Inspect mounts and scan misfire counters before approving transmission work.",
+        likelyFix: "Engine mount / torque mount replacement",
+        realFixPrice: [350, 900],
+        agentTrapPrice: [1800, 3500],
+        trapPercentage: 70,
+        requiredTools: ["VIDA"],
+      },
+      {
+        id: "volvo-coolant-warning",
+        symptom: "Coolant warning / coolant level keeps dropping",
+        severity: "med",
+        diagnosticTip:
+          "Common causes include expansion tank, hoses, thermostat, or water pump. Pressure-test the cooling system before assuming head-gasket or major engine failure.",
+        likelyFix: "Cooling-system pressure test, tank/hose/thermostat repair",
+        realFixPrice: [250, 1000],
+        agentTrapPrice: [2000, 5000],
+        trapPercentage: 70,
+        requiredTools: ["VIDA", "Cooling system pressure tester"],
+      },
+      {
+        id: "volvo-sensus-reboot",
+        symptom: "Sensus screen freezes / infotainment reboots",
+        severity: "low",
+        diagnosticTip:
+          "Often software, low battery voltage, or module reset before screen replacement. Check battery health and update software first.",
+        likelyFix: "Battery health check, Sensus software update/reset",
+        realFixPrice: [120, 400],
+        agentTrapPrice: [1800, 4000],
+        trapPercentage: 70,
+        requiredTools: ["VIDA"],
+      },
+    ],
+  },
+
 
   // ─────────────── BMW (PHASE 1 SECONDARY) ───────────────
   {
@@ -353,6 +413,40 @@ export const CAR_MODELS: CarModel[] = [
         agentTrapPrice: [3500, 5000],
         trapPercentage: 70,
       },
+      {
+        id: "g30-coolant-loss",
+        symptom: "Coolant level keeps dropping / engine temperature warning",
+        severity: "high",
+        diagnosticTip:
+          "On BMW G30 520i/530i, coolant loss is commonly expansion tank, hose, water pump, or thermostat housing before it is a head-gasket issue. Pressure-test the cooling system and inspect plastic fittings before approving major engine work.",
+        likelyFix: "Cooling-system pressure test, expansion tank/hose/water pump repair",
+        realFixPrice: [250, 900],
+        agentTrapPrice: [1800, 4500],
+        trapPercentage: 70,
+        requiredTools: ["ISTA", "Cooling system pressure tester"],
+      },
+      {
+        id: "g30-aircon-weak",
+        symptom: "Aircon not cold / weak cooling at idle",
+        severity: "low",
+        diagnosticTip:
+          "Weak BMW G30 aircon is often refrigerant leak, condenser, cabin filter, or compressor control. Start with leak dye and pressure readings before compressor replacement. A compressor quote without leak test proof is a red flag.",
+        likelyFix: "Leak test, condenser/cabin filter check, refrigerant service",
+        realFixPrice: [150, 650],
+        agentTrapPrice: [1800, 3200],
+        trapPercentage: 75,
+      },
+      {
+        id: "g30-suspension-clunk",
+        symptom: "Front suspension clunk / knocking over bumps",
+        severity: "low",
+        diagnosticTip:
+          "Usually control arm bushings, sway bar links, or top mounts — not the full absorber. Ask for lifted-car inspection and visible play/leak proof before replacing expensive struts.",
+        likelyFix: "Control arm bushings, sway bar links or top mount replacement",
+        realFixPrice: [350, 900],
+        agentTrapPrice: [1800, 3500],
+        trapPercentage: 75,
+      },
     ],
   },
 
@@ -389,6 +483,66 @@ export const CAR_MODELS: CarModel[] = [
       },
     ],
   },
+
+  {
+    id: "audi-c8-a6",
+    brand: "Audi",
+    model: "C8 A6",
+    yearsActive: "2018-present",
+    popularSG: true,
+    searchAliases: ["Audi A6", "A6 2.0T", "C8", "Audi sedan"],
+    commonIssues: [
+      {
+        id: "a6-dsg-jerk",
+        symptom: "Gearbox jerking / S-Tronic hesitant in traffic",
+        severity: "med",
+        diagnosticTip:
+          "Audi A6 S-Tronic hesitation is commonly DSG fluid, adaptation, or mechatronic seal before full gearbox failure. Ask for ODIS fault codes and adaptation values before approving valve-body replacement.",
+        likelyFix: "DSG service, adaptation reset, mechatronic seal diagnosis",
+        realFixPrice: [450, 950],
+        agentTrapPrice: [2500, 5500],
+        trapPercentage: 70,
+        requiredTools: ["ODIS", "VCDS"],
+      },
+      {
+        id: "a6-mmi-black-screen",
+        symptom: "MMI screen black / infotainment rebooting",
+        severity: "low",
+        diagnosticTip:
+          "MMI black screens are often software, low battery voltage, or module coding before full headunit failure. Try battery health check, software reset/update, and scan first. Headunit replacement should be last.",
+        likelyFix: "Battery health check, MMI software reset/update, module scan",
+        realFixPrice: [120, 450],
+        agentTrapPrice: [2500, 5000],
+        trapPercentage: 70,
+        requiredTools: ["ODIS", "VCDS"],
+      },
+      {
+        id: "a6-engine-mount-vibration",
+        symptom: "Vibration at idle / engine mount warning",
+        severity: "low",
+        diagnosticTip:
+          "Idle vibration is often active engine mounts or misfire-related, not gearbox failure. Scan mount-control faults and check misfire counters before approving drivetrain work.",
+        likelyFix: "Engine mount diagnosis/replacement or misfire repair",
+        realFixPrice: [500, 1200],
+        agentTrapPrice: [2500, 4500],
+        trapPercentage: 65,
+        requiredTools: ["ODIS", "VCDS"],
+      },
+      {
+        id: "a6-water-pump-leak",
+        symptom: "Coolant leak / sweet smell after parking",
+        severity: "med",
+        diagnosticTip:
+          "On Audi 2.0T engines, water pump and thermostat housing leaks are common. Pressure-test first before assuming radiator or head-gasket failure.",
+        likelyFix: "Water pump / thermostat housing replacement",
+        realFixPrice: [650, 1200],
+        agentTrapPrice: [2500, 4800],
+        trapPercentage: 75,
+        requiredTools: ["Cooling system pressure tester"],
+      },
+    ],
+  },
+
 
   // ─────────────── PORSCHE ───────────────
   {
@@ -531,6 +685,65 @@ export const CAR_MODELS: CarModel[] = [
   },
 
 
+  {
+    id: "porsche-macan-95b",
+    brand: "Porsche",
+    model: "Macan",
+    yearsActive: "2014-present",
+    popularSG: true,
+    searchAliases: ["Porsche Macan", "Macan S", "Macan 2.0", "95B"],
+    commonIssues: [
+      {
+        id: "macan-pdk-jerk",
+        symptom: "PDK gearbox jerking / shudder in traffic",
+        severity: "med",
+        diagnosticTip:
+          "PDK jerking can be fluid/adaptation, mounts, or mechatronic-related before gearbox replacement. Ask for PIWIS fault codes and adaptation values first. A full gearbox quote without PIWIS diagnosis is weak.",
+        likelyFix: "PDK service, adaptation reset, mount/mechatronic diagnosis",
+        realFixPrice: [700, 1800],
+        agentTrapPrice: [5000, 12000],
+        trapPercentage: 65,
+        requiredTools: ["PIWIS"],
+      },
+      {
+        id: "macan-transfer-case-shudder",
+        symptom: "Shudder or vibration when turning / accelerating",
+        severity: "med",
+        diagnosticTip:
+          "Macan transfer case shudder is a known issue. Confirm with road test and PIWIS before replacing unrelated suspension parts. Some cases need transfer case fluid/service; severe cases need transfer case replacement.",
+        likelyFix: "Transfer case diagnosis, fluid/service or replacement",
+        realFixPrice: [450, 2800],
+        agentTrapPrice: [4500, 7500],
+        trapPercentage: 75,
+        requiredTools: ["PIWIS"],
+      },
+      {
+        id: "macan-coolant-leak",
+        symptom: "Coolant leak / low coolant warning",
+        severity: "med",
+        diagnosticTip:
+          "Coolant leaks on Macan are often thermostat housing, water pump, or plastic pipes. Pressure-test the system and inspect the leak source before approving major engine teardown.",
+        likelyFix: "Water pump / thermostat housing / coolant pipe repair",
+        realFixPrice: [800, 1800],
+        agentTrapPrice: [3500, 7000],
+        trapPercentage: 70,
+        requiredTools: ["Cooling system pressure tester", "PIWIS"],
+      },
+      {
+        id: "macan-suspension-knock",
+        symptom: "Knocking sound from suspension over bumps",
+        severity: "low",
+        diagnosticTip:
+          "Usually control arms, links, or mounts before full strut replacement. Ask for lifted inspection and proof of play/leak before approving expensive Porsche suspension parts.",
+        likelyFix: "Control arms, sway links or top mount replacement",
+        realFixPrice: [500, 1400],
+        agentTrapPrice: [2500, 6000],
+        trapPercentage: 75,
+      },
+    ],
+  },
+
+
   // ─────────────── TESLA ───────────────
   {
     id: "tesla-model-3-y",
@@ -561,6 +774,29 @@ export const CAR_MODELS: CarModel[] = [
         realFixPrice: [0, 200],
         agentTrapPrice: [1500, 2500],
         trapPercentage: 70,
+      },
+      {
+        id: "tesla-aircon-weak",
+        symptom: "Aircon weak / cabin takes long to cool",
+        severity: "low",
+        diagnosticTip:
+          "Tesla aircon issues can be cabin filters, refrigerant, heat pump/valve behaviour, or software before compressor failure. Ask for thermal-system scan data before approving compressor replacement.",
+        likelyFix: "Cabin filter, refrigerant/thermal-system scan, software update",
+        realFixPrice: [120, 600],
+        agentTrapPrice: [1800, 3500],
+        trapPercentage: 70,
+        requiredTools: ["Tesla Toolbox", "EV-safe aircon service equipment"],
+      },
+      {
+        id: "tesla-suspension-noise",
+        symptom: "Creaking / knocking from suspension",
+        severity: "low",
+        diagnosticTip:
+          "Tesla Model 3/Y suspension noises are often control arms or links, not the full strut. Ask for lifted inspection and proof of play before replacing larger assemblies.",
+        likelyFix: "Control arm / suspension link diagnosis and replacement",
+        realFixPrice: [350, 900],
+        agentTrapPrice: [1600, 3200],
+        trapPercentage: 75,
       },
     ],
   },
