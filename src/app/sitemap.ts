@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 
 export const dynamic = "force-static";
 import { listings } from "@/data/listings";
+import { blogPosts } from "@/data/blogPosts";
 import { getAllIssues, getIssueSeoSlug } from "@/lib/directory";
 
 const BASE_URL = "https://workshopgowhere.com";
@@ -15,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/audit-my-quote`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE_URL}/submit`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
     { url: `${BASE_URL}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
+    { url: `${BASE_URL}/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
   ];
 
   const problemRoutes: MetadataRoute.Sitemap = getAllIssues().map((issue) => ({
@@ -31,5 +33,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: shop.verified ? 0.7 : 0.5,
   }));
 
-  return [...staticRoutes, ...problemRoutes, ...workshopRoutes];
+  const blogRoutes: MetadataRoute.Sitemap = blogPosts.map((post) => ({
+    url: `${BASE_URL}/blog/${post.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.75,
+  }));
+
+  return [...staticRoutes, ...problemRoutes, ...workshopRoutes, ...blogRoutes];
 }

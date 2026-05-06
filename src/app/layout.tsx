@@ -87,6 +87,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <a href="/workshops" className="hover:text-slate-900 dark:hover:text-white">
                 Workshops
               </a>
+              <a href="/blog" className="hover:text-slate-900 dark:hover:text-white">
+                Blog
+              </a>
               <a href="/audit-my-quote" className="hover:text-slate-900 dark:hover:text-white">
                 Audit quote
               </a>
@@ -112,6 +115,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             ·{" "}
             <a href="/workshops" className="underline hover:text-blue-600 dark:hover:text-blue-400">
               Workshops
+            </a>{" "}
+            ·{" "}
+            <a href="/blog" className="underline hover:text-blue-600 dark:hover:text-blue-400">
+              Blog
             </a>{" "}
             ·{" "}
             <a href="/submit" className="underline hover:text-blue-600 dark:hover:text-blue-400">
