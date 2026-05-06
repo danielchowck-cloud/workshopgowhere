@@ -59,7 +59,7 @@ function cleanSlugPart(value: string): string {
     .replace(/^-+|-+$/g, "");
 }
 
-function ownerModelName(model: string): string {
+export function ownerModelName(model: string): string {
   if (model.includes("E-Class")) return "E-Class";
   if (model.includes("C-Class")) return "C-Class";
   if (model.includes("GLE")) return "GLE";
@@ -71,6 +71,10 @@ function ownerModelName(model: string): string {
   if (model.includes("Cayenne")) return "Cayenne";
   if (model.includes("Model 3")) return "Model 3 Model Y";
   return model.replace(/^([A-Z][0-9]{2,3}|F\d+|G\d+|B\d+)\s+/g, "").replace(/\([^)]*\)/g, "").trim();
+}
+
+export function ownerFacingModelLabel(model: CarModel): string {
+  return `${ownerModelName(model.model)} (${model.yearsActive})`;
 }
 
 export function getIssueSeoSlug(issue: IssueWithModel): string {

@@ -1,10 +1,24 @@
 import { CAR_MODELS } from "@/data/carModels";
 import { listings } from "@/data/listings";
-import { getIssueSeoSlug } from "@/lib/directory";
+import { getAllIssues, getIssue, getIssueSeoSlug, ownerFacingModelLabel } from "@/lib/directory";
 
 const popularIssues = CAR_MODELS.flatMap((model) =>
   model.commonIssues.slice(0, 2).map((issue) => ({ model, issue })),
 ).slice(0, 8);
+
+// All problem URLs for the orphan-fix grid (P0-2 from SEO audit 2026-05-06)
+const allProblemLinks = getAllIssues().map((issue) => ({
+  slug: getIssueSeoSlug(issue),
+  brand: issue.model.brand,
+  modelLabel: ownerFacingModelLabel(issue.model),
+  symptom: issue.symptom,
+}));
+
+// Helper for hero "Try:" chips — resolves issue id to real /car-problems/[slug] URL
+function heroLinkFor(issueId: string): string {
+  const issue = getIssue(issueId);
+  return issue ? `/car-problems/${getIssueSeoSlug(issue)}` : "/";
+}
 
 const brands = ["Mercedes-Benz", "BMW", "Audi", "Porsche", "Volvo", "Tesla"];
 
@@ -12,6 +26,7 @@ export const metadata = {
   title: "workshopgowhere — Problem-first diagnostic marketplace",
   description:
     "Find likely causes, fair repair prices and Singapore specialist workshops for Continental car problems.",
+  alternates: { canonical: "/" },
 };
 
 export default function Home() {
@@ -20,7 +35,7 @@ export default function Home() {
       <section className="relative overflow-hidden border-b border-slate-200 bg-[radial-gradient(circle_at_top,_#dbeafe,_transparent_34%),linear-gradient(180deg,_#ffffff,_#f8fafc)] px-4 py-12 dark:border-slate-800 dark:bg-[radial-gradient(circle_at_top,_#172554,_transparent_34%),linear-gradient(180deg,_#020617,_#0f172a)] sm:py-16">
         <div className="mx-auto max-w-6xl">
           <div className="inline-flex rounded-full border border-blue-200 bg-white/80 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.2em] text-blue-800 shadow-sm dark:border-blue-900 dark:bg-slate-900/80 dark:text-blue-200">
-            Singapore continental car diagnostic guide
+            Singapore No. 1 Car Diagnostic Guide
           </div>
 
           <div className="mt-6 grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
@@ -37,7 +52,7 @@ export default function Home() {
                   <input
                     aria-label="Describe your car issue"
                     className="min-h-12 flex-1 rounded-xl border border-slate-200 bg-slate-50 px-4 text-sm outline-none ring-blue-500 transition placeholder:text-slate-400 focus:ring-2 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
-                    placeholder="e.g. Mercedes W213 rear sinks overnight"
+                    placeholder="e.g. Mercedes E-Class rear sinks overnight"
                   />
                   <a
                     href="#popular"
@@ -48,11 +63,11 @@ export default function Home() {
                 </div>
                 <div className="mt-3 flex flex-wrap gap-2 text-xs text-slate-500 dark:text-slate-400">
                   <span>Try:</span>
-                  <a href="#w213-airmatic-drop" className="hover:text-blue-600">rear sinks overnight</a>
+                  <a href={heroLinkFor("w213-airmatic-drop")} className="hover:text-blue-600">rear sinks overnight</a>
                   <span>·</span>
-                  <a href="#w213-gearbox-jerk" className="hover:text-blue-600">gearbox jerking</a>
+                  <a href={heroLinkFor("w213-gearbox-jerk")} className="hover:text-blue-600">gearbox jerking</a>
                   <span>·</span>
-                  <a href="#w213-aircon-not-cold" className="hover:text-blue-600">aircon not cold</a>
+                  <a href={heroLinkFor("w213-aircon-not-cold")} className="hover:text-blue-600">aircon not cold</a>
                 </div>
               </div>
 
@@ -65,7 +80,7 @@ export default function Home() {
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <p className="text-xs font-bold uppercase tracking-widest text-slate-500">Example result</p>
-                  <h2 className="mt-2 text-xl font-black">W213 rear sinks overnight</h2>
+                  <h2 className="mt-2 text-xl font-black">Mercedes E-Class rear sinks overnight</h2>
                 </div>
                 <span className="rounded-full bg-amber-100 px-2.5 py-1 text-[10px] font-black uppercase tracking-wider text-amber-800 dark:bg-amber-950/40 dark:text-amber-200">
                   Check first
@@ -122,7 +137,7 @@ export default function Home() {
             >
               <div className="flex items-start justify-between gap-3">
                 <div className="text-[11px] font-bold uppercase tracking-wider text-slate-500">
-                  {model.brand} · {model.model}
+                  {model.brand} · {ownerFacingModelLabel(model)}
                 </div>
                 <span className="shrink-0 rounded-full bg-blue-100 px-2 py-0.5 text-[10px] font-black uppercase tracking-wider text-blue-800 dark:bg-blue-950/50 dark:text-blue-200">
                   {issue.trapPercentage}% match
@@ -152,6 +167,31 @@ export default function Home() {
               </div>
             </a>
           ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-4 pb-12">
+        <div className="rounded-3xl border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900 sm:p-8">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-blue-700 dark:text-blue-300">Full diagnostic library</p>
+          <h2 className="mt-2 text-xl font-black tracking-tight sm:text-2xl">Every Continental car problem we cover</h2>
+          <p className="mt-2 max-w-3xl text-sm text-slate-600 dark:text-slate-400">
+            All {allProblemLinks.length} symptom pages — direct links to root cause, fair price and Singapore workshop matches.
+          </p>
+          <ul className="mt-6 grid gap-x-4 gap-y-2 text-sm sm:grid-cols-2 lg:grid-cols-3">
+            {allProblemLinks.map((p) => (
+              <li key={p.slug}>
+                <a
+                  href={`/car-problems/${p.slug}`}
+                  className="block rounded-md px-2 py-1 text-slate-700 transition hover:bg-blue-50 hover:text-blue-800 dark:text-slate-300 dark:hover:bg-blue-950/40 dark:hover:text-blue-200"
+                >
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500">
+                    {p.brand} {p.modelLabel}
+                  </span>
+                  <span className="block leading-5">{p.symptom}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 

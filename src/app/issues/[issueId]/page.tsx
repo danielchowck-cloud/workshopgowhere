@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { CAR_MODELS } from "@/data/carModels";
-import { formatRange, formatSgd, getIssue, getMatchingWorkshops } from "@/lib/directory";
+import { formatRange, formatSgd, getIssue, getMatchingWorkshops, ownerFacingModelLabel } from "@/lib/directory";
 
 export function generateStaticParams() {
   return CAR_MODELS.flatMap((model) => model.commonIssues.map((issue) => ({ issueId: issue.id })));
@@ -11,8 +11,8 @@ export async function generateMetadata({ params }: { params: Promise<{ issueId: 
   const issue = getIssue(issueId);
   if (!issue) return {};
   return {
-    title: `${issue.model.model}: ${issue.symptom} — workshopgowhere`,
-    description: `Likely fix, fair SG price range, red-flag quote and workshops for ${issue.model.brand} ${issue.model.model}.`,
+    title: `${issue.model.brand} ${ownerFacingModelLabel(issue.model)}: ${issue.symptom} — workshopgowhere`,
+    description: `Likely fix, fair SG price range, red-flag quote and workshops for ${issue.model.brand} ${ownerFacingModelLabel(issue.model)}.`,
   };
 }
 
@@ -31,7 +31,7 @@ export default async function IssuePage({ params }: { params: Promise<{ issueId:
           <div className="mt-6 grid gap-8 lg:grid-cols-[1fr_360px] lg:items-start">
             <div>
               <p className="text-xs font-black uppercase tracking-[0.2em] text-blue-700 dark:text-blue-300">
-                {issue.model.brand} · {issue.model.model} · {issue.model.yearsActive}
+                {issue.model.brand} · {ownerFacingModelLabel(issue.model)}
               </p>
               <h1 className="mt-3 max-w-3xl text-3xl font-black tracking-tight sm:text-5xl">{issue.symptom}</h1>
               <p className="mt-5 max-w-3xl text-base leading-7 text-slate-700 dark:text-slate-300">{issue.diagnosticTip}</p>

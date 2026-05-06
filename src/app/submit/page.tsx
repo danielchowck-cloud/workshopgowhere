@@ -1,6 +1,7 @@
 export const metadata = {
   title: "List your workshop — workshopgowhere",
   description: "Continental & EV specialist in Singapore? Get verified-listed for free during launch.",
+  alternates: { canonical: "/submit" },
 };
 
 export default function Submit() {

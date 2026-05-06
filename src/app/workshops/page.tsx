@@ -4,6 +4,7 @@ import { formatSgd } from "@/lib/directory";
 export const metadata = {
   title: "Singapore continental car workshops — workshopgowhere",
   description: "Verified and candidate Mercedes, BMW, Audi, Porsche, Volvo and Tesla specialists in Singapore.",
+  alternates: { canonical: "/workshops" },
 };
 
 const focusListings = listings.filter((shop) =>

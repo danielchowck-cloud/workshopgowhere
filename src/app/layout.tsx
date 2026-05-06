@@ -13,7 +13,9 @@ export const metadata: Metadata = {
     "Audi specialist sg",
     "Continental car repair singapore",
     "agent alternative workshop sg",
-    "W213 air suspension fix",
+    "Mercedes E-Class rear sinks overnight",
+    "Mercedes E-Class air suspension drops overnight",
+    "Mercedes E-Class air suspension fix Singapore",
     "9G-Tronic conductor plate",
     "ZF mechatronic singapore",
     "Tesla repair sg",
@@ -21,7 +23,6 @@ export const metadata: Metadata = {
     "car repair quote auditor",
   ],
   authors: [{ name: "workshopgowhere" }],
-  alternates: { canonical: "/" },
   openGraph: {
     title: "workshopgowhere — Smart Diagnostic Marketplace",
     description:

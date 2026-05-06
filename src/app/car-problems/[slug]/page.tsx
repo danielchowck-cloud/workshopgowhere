@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { formatRange, formatSgd, getAllIssues, getIssueBySeoSlug, getIssueSeoSlug, getIssueSeoTitle, getMatchingWorkshops } from "@/lib/directory";
+import { formatRange, formatSgd, getAllIssues, getIssueBySeoSlug, getIssueSeoSlug, getIssueSeoTitle, getMatchingWorkshops, ownerFacingModelLabel } from "@/lib/directory";
 
 export function generateStaticParams() {
   return getAllIssues().map((issue) => ({ slug: getIssueSeoSlug(issue) }));
@@ -11,7 +11,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!issue) return {};
   return {
     title: `${getIssueSeoTitle(issue)} — fair SG repair price`,
-    description: `What it usually means, fair Singapore repair price, red-flag quote and proof to ask for before repairing ${issue.model.brand} ${issue.model.model}.`,
+    description: `What it usually means, fair Singapore repair price, red-flag quote and proof to ask for before repairing ${issue.model.brand} ${ownerFacingModelLabel(issue.model)}.`,
+    alternates: { canonical: `/car-problems/${getIssueSeoSlug(issue)}` },
   };
 }
 
@@ -29,7 +30,7 @@ export default async function CarProblemPage({ params }: { params: Promise<{ slu
     author: { "@type": "Organization", name: "workshopgowhere" },
     publisher: { "@type": "Organization", name: "workshopgowhere" },
     mainEntityOfPage: canonicalUrl,
-    about: [issue.model.brand, issue.model.model, issue.symptom, issue.likelyFix],
+    about: [issue.model.brand, ownerFacingModelLabel(issue.model), issue.symptom, issue.likelyFix],
   };
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",

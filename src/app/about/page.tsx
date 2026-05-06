@@ -1,6 +1,7 @@
 export const metadata = {
   title: "About — workshopgowhere",
   description: "Why we built workshopgowhere — the Continental car specialist matchmaker for Singapore.",
+  alternates: { canonical: "/about" },
 };
 
 export default function About() {
@@ -49,8 +50,8 @@ export default function About() {
 
         <h2>Common Fix Database</h2>
         <p>
-          Many Continental issues have well-known &quot;common fixes&quot;. The W213 air suspension
-          dropping is almost always a $200-350 valve block, not a $3,000 strut.
+          Many Continental issues have well-known &quot;common fixes&quot;. For example, a Mercedes E-Class
+          rear that sinks overnight is often a $300-450 valve block, not a $3,000 strut.
           The N20 timing chain rattle on cold start is a known issue with a known fix.
           We document these and surface them when they match your symptom.
         </p>

@@ -1,6 +1,7 @@
 export const metadata = {
   title: "Audit my quote — workshopgowhere",
   description: "Upload a workshop repair quote, get a second opinion. See if the price and parts are fair.",
+  alternates: { canonical: "/audit-my-quote" },
 };
 
 export default function AuditQuote() {

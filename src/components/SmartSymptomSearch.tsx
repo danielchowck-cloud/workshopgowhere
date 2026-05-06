@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { listings } from "@/data/listings";
 import { CAR_MODELS, FEATURED_BRAND, groupModelsByBrand, type CarModel, type CommonIssue } from "@/data/carModels";
+import { ownerFacingModelLabel } from "@/lib/directory";
 import { ConsumerAlertBanner } from "./ConsumerAlertBanner";
 import { WorkshopCardV2 } from "./WorkshopCardV2";
 import { QuoteAuditor } from "./QuoteAuditor";
@@ -102,7 +103,7 @@ export function SmartSymptomSearch() {
                       : "border-slate-300 bg-white text-slate-800 hover:border-blue-400 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-blue-600"
                   }`}
                 >
-                  <div className="font-semibold">{m.model}</div>
+                  <div className="font-semibold">{ownerFacingModelLabel(m)}</div>
                   <div className="text-[10px] text-slate-500 dark:text-slate-400">
                     {m.yearsActive} · {m.commonIssues.length} known issues
                   </div>
@@ -174,7 +175,7 @@ export function SmartSymptomSearch() {
         {/* CONSUMER ALERT */}
         {activeModel && activeIssue && (
           <section>
-            <ConsumerAlertBanner issue={activeIssue} modelLabel={`${activeModel.brand} ${activeModel.model}`} />
+            <ConsumerAlertBanner issue={activeIssue} modelLabel={`${activeModel.brand} ${ownerFacingModelLabel(activeModel)}`} />
           </section>
         )}
 

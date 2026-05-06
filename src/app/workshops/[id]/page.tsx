@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { listings } from "@/data/listings";
-import { formatSgd, getAllIssues, getListing } from "@/lib/directory";
+import { formatSgd, getAllIssues, getIssueSeoSlug, getListing, ownerFacingModelLabel } from "@/lib/directory";
 
 export function generateStaticParams() {
   return listings.map((shop) => ({ id: shop.id }));
@@ -13,6 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   return {
     title: `${shop.title} — workshopgowhere`,
     description: `${shop.title} profile: brands, tools, transparency signals and known repair coverage.`,
+    alternates: { canonical: `/workshops/${shop.id}` },
   };
 }
 
@@ -98,8 +99,8 @@ export default async function WorkshopProfile({ params }: { params: Promise<{ id
           <h2 className="text-2xl font-black">Relevant diagnostic pages</h2>
           <div className="mt-4 grid gap-3 md:grid-cols-2">
             {matchingIssues.map((issue) => (
-              <a key={issue.id} href={`/issues/${issue.id}`} className="rounded-2xl border border-slate-200 bg-white p-4 transition hover:border-blue-400 dark:border-slate-800 dark:bg-slate-900">
-                <div className="text-xs font-bold uppercase tracking-wider text-slate-500">{issue.model.brand} · {issue.model.model}</div>
+              <a key={issue.id} href={`/car-problems/${getIssueSeoSlug(issue)}`} className="rounded-2xl border border-slate-200 bg-white p-4 transition hover:border-blue-400 dark:border-slate-800 dark:bg-slate-900">
+                <div className="text-xs font-bold uppercase tracking-wider text-slate-500">{issue.model.brand} · {ownerFacingModelLabel(issue.model)}</div>
                 <div className="mt-1 font-black">{issue.symptom}</div>
                 <div className="mt-2 text-sm font-bold text-emerald-700 dark:text-emerald-300">
                   {shop.symptomPrices?.[issue.id] ? `This shop from ${formatSgd(shop.symptomPrices[issue.id])}` : "Coverage match"}
