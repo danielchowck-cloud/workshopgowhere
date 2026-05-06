@@ -1,4 +1,5 @@
 import { CAR_MODELS } from "@/data/carModels";
+import { ProblemLibrary } from "@/components/ProblemLibrary";
 import { listings } from "@/data/listings";
 import { getAllIssues, getIssue, getIssueSeoSlug, ownerFacingModelLabel } from "@/lib/directory";
 
@@ -171,28 +172,7 @@ export default function Home() {
       </section>
 
       <section className="mx-auto max-w-6xl px-4 pb-12">
-        <div className="rounded-3xl border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900 sm:p-8">
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-blue-700 dark:text-blue-300">Full diagnostic library</p>
-          <h2 className="mt-2 text-xl font-black tracking-tight sm:text-2xl">Every Continental car problem we cover</h2>
-          <p className="mt-2 max-w-3xl text-sm text-slate-600 dark:text-slate-400">
-            All {allProblemLinks.length} symptom pages — direct links to root cause, fair price and Singapore workshop matches.
-          </p>
-          <ul className="mt-6 grid gap-x-4 gap-y-2 text-sm sm:grid-cols-2 lg:grid-cols-3">
-            {allProblemLinks.map((p) => (
-              <li key={p.slug}>
-                <a
-                  href={`/car-problems/${p.slug}`}
-                  className="block rounded-md px-2 py-1 text-slate-700 transition hover:bg-blue-50 hover:text-blue-800 dark:text-slate-300 dark:hover:bg-blue-950/40 dark:hover:text-blue-200"
-                >
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500">
-                    {p.brand} {p.modelLabel}
-                  </span>
-                  <span className="block leading-5">{p.symptom}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <ProblemLibrary problems={allProblemLinks} />
       </section>
 
       <section className="border-y border-slate-200 bg-white px-4 py-12 dark:border-slate-800 dark:bg-slate-900/50">

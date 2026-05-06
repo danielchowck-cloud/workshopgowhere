@@ -1,5 +1,5 @@
+import { WorkshopDirectory } from "@/components/WorkshopDirectory";
 import { listings } from "@/data/listings";
-import { formatSgd } from "@/lib/directory";
 
 export const metadata = {
   title: "Singapore continental car workshops — workshopgowhere",
@@ -26,28 +26,7 @@ export default function WorkshopsPage() {
           <a href="/submit" className="rounded-2xl bg-blue-600 px-5 py-4 text-center text-sm font-black text-white hover:bg-blue-700">List your workshop</a>
         </div>
 
-        <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {focusListings.map((shop) => (
-            <a key={shop.id} href={`/workshops/${shop.id}`} className="rounded-3xl border border-slate-200 bg-white p-5 transition hover:-translate-y-0.5 hover:border-blue-400 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900">
-              <div className="flex items-start justify-between gap-3">
-                <div>
-                  <h2 className="font-black">{shop.title}</h2>
-                  <p className="mt-1 text-xs text-slate-500">{shop.area ?? shop.region} · {shop.rating ? `★${shop.rating}` : "Rating pending"}</p>
-                </div>
-                {shop.verified && <span className="rounded-full bg-blue-100 px-2 py-1 text-[10px] font-black text-blue-800 dark:bg-blue-950 dark:text-blue-200">Verified</span>}
-              </div>
-              <p className="mt-3 line-clamp-3 text-sm text-slate-600 dark:text-slate-400">{shop.blurb}</p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {shop.brands?.slice(0, 4).map((brand) => (
-                  <span key={brand} className="rounded-full bg-slate-100 px-2 py-1 text-[11px] font-bold text-slate-700 dark:bg-slate-950 dark:text-slate-300">{brand}</span>
-                ))}
-              </div>
-              <div className="mt-4 text-sm font-bold text-emerald-700 dark:text-emerald-300">
-                {shop.priceFrom ? `From ${formatSgd(shop.priceFrom)}` : "Price pending"}
-              </div>
-            </a>
-          ))}
-        </div>
+        <WorkshopDirectory shops={focusListings} />
       </div>
     </div>
   );
