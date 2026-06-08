@@ -10,9 +10,13 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   const { id } = await params;
   const shop = getListing(id);
   if (!shop) return {};
+  const brandsStr = shop.brands?.slice(0, 3).join(", ") ?? "";
+  const rawBlurb = shop.blurb ?? "";
+  const blurbSnippet = rawBlurb.length > 100 ? rawBlurb.slice(0, 100) + "…" : rawBlurb;
+  const description = `${shop.title} — ${brandsStr ? brandsStr + " workshop in " : ""}${shop.area ?? shop.region}, Singapore. ${blurbSnippet}`;
   return {
     title: `${shop.title} — workshopgowhere`,
-    description: `${shop.title} profile: brands, tools, transparency signals and known repair coverage.`,
+    description,
     alternates: { canonical: `/workshops/${shop.id}` },
   };
 }
@@ -35,17 +39,26 @@ export default async function WorkshopProfile({ params }: { params: Promise<{ id
       { "@type": "ListItem", position: 3, name: shop.title, item: canonicalUrl },
     ],
   };
-  const localBusinessJsonLd = {
+  const localBusinessJsonLdRaw = {
     "@context": "https://schema.org",
     "@type": "AutoRepair",
     name: shop.title,
     url: canonicalUrl,
     description: shop.blurb,
-    address: shop.address || shop.area || shop.region,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: shop.address || shop.area || "",
+      addressLocality: "Singapore",
+      addressCountry: "SG",
+    },
+    telephone: shop.phone ? `+65${shop.phone.replace(/\D/g, "")}` : undefined,
+    openingHours: shop.hours || undefined,
     areaServed: "Singapore",
     aggregateRating: shop.rating ? { "@type": "AggregateRating", ratingValue: shop.rating, reviewCount: shop.reviewCount || 1 } : undefined,
     makesOffer: shop.priceFrom ? { "@type": "Offer", priceCurrency: "SGD", price: shop.priceFrom, description: "Starting diagnostic or repair price guide" } : undefined,
   };
+  // Strip undefined fields before serialising
+  const localBusinessJsonLd = JSON.parse(JSON.stringify(localBusinessJsonLdRaw));
 
   return (
     <div className="bg-slate-50 px-4 py-12 text-slate-950 dark:bg-slate-950 dark:text-white">
@@ -70,6 +83,13 @@ export default async function WorkshopProfile({ params }: { params: Promise<{ id
                 <p>Rating: {shop.rating ? `★${shop.rating} (${shop.reviewCount ?? 0})` : "Pending"}</p>
                 <p>From: {shop.priceFrom ? formatSgd(shop.priceFrom) : "Ask"}</p>
                 <p>Region: {shop.region}</p>
+                {shop.phone && (
+                  <p>Call: <a href={`tel:+65${shop.phone.replace(/[\s+]/g, "")}`} className="text-blue-700 hover:underline dark:text-blue-300">+65 {shop.phone}</a></p>
+                )}
+                {shop.hours && <p>Hours: {shop.hours}</p>}
+                {shop.sourceUrl && !/google\.com|google-maps|threebestrated|motorist\.sg|recordowl|sgmerc|sgcarmart|facebook\.com|forum/i.test(shop.sourceUrl) && (
+                  <p>Website: <a href={shop.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:underline dark:text-blue-300">Visit →</a></p>
+                )}
                 {shop.transparencyScore && <p>Transparency: {"★".repeat(shop.transparencyScore)}</p>}
               </div>
             </div>

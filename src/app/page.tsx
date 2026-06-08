@@ -21,8 +21,6 @@ function heroLinkFor(issueId: string): string {
   return issue ? `/car-problems/${getIssueSeoSlug(issue)}` : "/";
 }
 
-const brands = ["Mercedes-Benz", "BMW", "Audi", "Porsche", "Volvo", "Tesla"];
-
 export const metadata = {
   title: "workshopgowhere — Problem-first diagnostic marketplace",
   description:
@@ -185,13 +183,23 @@ export default function Home() {
             </p>
           </div>
           <div className="grid gap-3 sm:grid-cols-3">
-            {brands.map((brand, index) => (
-              <div key={brand} className="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950">
+            {[
+              { brand: "Mercedes-Benz", slug: "mercedes-workshop-singapore" },
+              { brand: "BMW", slug: "bmw-workshop-singapore" },
+              { brand: "Porsche", slug: "porsche-workshop-singapore" },
+              { brand: "Audi", slug: "audi-workshop-singapore" },
+              { brand: "Volvo", slug: "volvo-workshop-singapore" },
+              { brand: "Tesla", slug: "tesla-workshop-singapore" },
+              { brand: "BYD", slug: "byd-workshop-singapore" },
+            ].map(({ brand, slug }) => (
+              <a
+                key={brand}
+                href={`/${slug}`}
+                className="block rounded-2xl border border-slate-200 bg-slate-50 p-4 transition hover:-translate-y-0.5 hover:border-blue-400 hover:shadow-lg dark:border-slate-800 dark:bg-slate-950 dark:hover:border-blue-500"
+              >
                 <div className="text-sm font-black">{brand}</div>
-                <div className="mt-2 text-xs text-slate-500">
-                  {index === 0 ? "Live issue library" : "Next brand path"}
-                </div>
-              </div>
+                <div className="mt-2 text-xs text-slate-500">{brand} workshops in Singapore →</div>
+              </a>
             ))}
           </div>
         </div>
@@ -234,8 +242,9 @@ export default function Home() {
               </p>
             </div>
             <div className="grid gap-3 text-sm">
-              <a href="/audit-my-quote" className="rounded-xl bg-white px-4 py-3 text-center font-bold text-slate-950 hover:bg-blue-50">Audit my quote</a>
+              <a href="/audit-my-quote" className="rounded-xl bg-orange-500 px-4 py-3 text-center font-bold text-white hover:bg-orange-600">Audit my quote</a>
               <a href="/workshops" className="rounded-xl border border-white/20 px-4 py-3 text-center font-bold text-white hover:bg-white/10">Browse workshops</a>
+              <a href="/blog/best-mercedes-specialist-workshop-singapore-criteria" className="rounded-xl border border-white/20 px-4 py-3 text-center text-xs font-bold text-blue-200 hover:bg-white/10">How to pick a Mercedes workshop in Singapore →</a>
             </div>
           </div>
         </div>

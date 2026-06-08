@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { CAR_MODELS } from "@/data/carModels";
-import { formatRange, formatSgd, getIssue, getIssueSeoSlug, getMatchingWorkshops, ownerFacingModelLabel } from "@/lib/directory";
+import { formatRange, formatSgd, getIssue, getMatchingWorkshops, ownerFacingModelLabel } from "@/lib/directory";
 
 export function generateStaticParams() {
   return CAR_MODELS.flatMap((model) => model.commonIssues.map((issue) => ({ issueId: issue.id })));
@@ -13,8 +13,6 @@ export async function generateMetadata({ params }: { params: Promise<{ issueId: 
   return {
     title: `${issue.model.brand} ${ownerFacingModelLabel(issue.model)}: ${issue.symptom} — workshopgowhere`,
     description: `Likely fix, fair SG price range, red-flag quote and workshops for ${issue.model.brand} ${ownerFacingModelLabel(issue.model)}.`,
-    robots: { index: false, follow: false },
-    alternates: { canonical: `/car-problems/${getIssueSeoSlug(issue)}` },
   };
 }
 

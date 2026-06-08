@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/workshops/:id(b00[1-3]|g00[1-3]|m00[1-3]|sp0[1-4]|v00[1-4]|vo01|em02|w10[1-3]|w20[1-5]|w30[1-2])",
+      "destination": "/workshops",
+      "permanent": true
+    },
+    {
+      "source": "/issues/:id",
+      "destination": "/workshops",
+      "permanent": true
+    }
+  ]
+}

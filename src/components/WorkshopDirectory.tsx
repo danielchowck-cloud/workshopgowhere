@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import type { Listing } from "@/data/listings";
 import { formatSgd } from "@/lib/directory";
 
-type RegionKey = "all" | "north" | "south" | "east" | "west" | "central";
+type RegionKey = "all" | "north" | "northeast" | "south" | "east" | "west" | "central";
 
 type Props = {
   shops: Listing[];
@@ -12,18 +12,22 @@ type Props = {
 
 const REGIONS: { key: RegionKey; label: string }[] = [
   { key: "all", label: "All SG" },
-  { key: "north", label: "North" },
-  { key: "south", label: "South" },
+  { key: "central", label: "Central" },
   { key: "east", label: "East" },
   { key: "west", label: "West" },
-  { key: "central", label: "Central" },
+  { key: "south", label: "South" },
+  { key: "north", label: "North" },
+  { key: "northeast", label: "Northeast" },
 ];
 
 function normalizeRegion(shop: Listing): RegionKey {
   const region = shop.region.toLowerCase();
   const area = (shop.area ?? "").toLowerCase();
 
-  if (region === "northeast" || ["hougang", "tagore", "ang mo kio", "yishun", "woodlands", "mandai"].some((place) => area.includes(place))) {
+  if (region === "northeast" || ["hougang", "sengkang", "punggol", "serangoon", "ang mo kio"].some((place) => area.includes(place))) {
+    return "northeast";
+  }
+  if (region === "north" || ["woodlands", "yishun", "admiralty", "sembawang", "mandai"].some((place) => area.includes(place))) {
     return "north";
   }
   if (["alexandra", "bukit merah", "harbourfront", "leng kee", "pasir panjang", "telok blangah"].some((place) => area.includes(place))) {
@@ -37,7 +41,7 @@ export function WorkshopDirectory({ shops }: Props) {
   const [activeRegion, setActiveRegion] = useState<RegionKey>("all");
 
   const counts = useMemo(() => {
-    const base: Record<RegionKey, number> = { all: shops.length, north: 0, south: 0, east: 0, west: 0, central: 0 };
+    const base: Record<RegionKey, number> = { all: shops.length, north: 0, northeast: 0, south: 0, east: 0, west: 0, central: 0 };
     shops.forEach((shop) => {
       base[normalizeRegion(shop)] += 1;
     });

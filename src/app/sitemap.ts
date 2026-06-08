@@ -19,6 +19,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
   ];
 
+  const brandHubSlugs = [
+    "mercedes-workshop-singapore",
+    "bmw-workshop-singapore",
+    "porsche-workshop-singapore",
+    "audi-workshop-singapore",
+    "volvo-workshop-singapore",
+    "tesla-workshop-singapore",
+    "byd-workshop-singapore",
+  ];
+  const brandHubRoutes: MetadataRoute.Sitemap = brandHubSlugs.map((slug) => ({
+    url: `${BASE_URL}/${slug}`,
+    lastModified: now,
+    changeFrequency: "weekly",
+    priority: 0.85,
+  }));
+
   const problemRoutes: MetadataRoute.Sitemap = getAllIssues().map((issue) => ({
     url: `${BASE_URL}/car-problems/${getIssueSeoSlug(issue)}`,
     lastModified: now,
@@ -40,5 +56,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.75,
   }));
 
-  return [...staticRoutes, ...problemRoutes, ...workshopRoutes, ...blogRoutes];
+  return [...staticRoutes, ...brandHubRoutes, ...problemRoutes, ...workshopRoutes, ...blogRoutes];
 }

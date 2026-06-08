@@ -10,7 +10,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const issue = getIssueBySeoSlug(slug);
   if (!issue) return {};
   return {
-    title: `${getIssueSeoTitle(issue)} — fair SG repair price`,
+    title: getIssueSeoTitle(issue),
     description: `What it usually means, fair Singapore repair price, red-flag quote and proof to ask for before repairing ${issue.model.brand} ${ownerFacingModelLabel(issue.model)}.`,
     alternates: { canonical: `/car-problems/${getIssueSeoSlug(issue)}` },
   };
@@ -130,6 +130,27 @@ export default async function CarProblemPage({ params }: { params: Promise<{ slu
                 </a>
               ))}
             </div>
+            {(() => {
+              const brandSlugMap: Record<string, string> = {
+                "Mercedes-Benz": "mercedes-workshop-singapore",
+                "BMW": "bmw-workshop-singapore",
+                "Porsche": "porsche-workshop-singapore",
+                "Audi": "audi-workshop-singapore",
+                "Volvo": "volvo-workshop-singapore",
+                "Tesla": "tesla-workshop-singapore",
+                "BYD": "byd-workshop-singapore",
+              };
+              const brandSlug = brandSlugMap[issue.model.brand];
+              if (!brandSlug) return null;
+              return (
+                <a
+                  href={`/${brandSlug}`}
+                  className="mt-4 block rounded-2xl border border-blue-200 bg-blue-50 p-3 text-center text-sm font-black text-blue-800 hover:border-blue-400 hover:bg-blue-100 dark:border-blue-900 dark:bg-blue-950/30 dark:text-blue-200 dark:hover:border-blue-700"
+                >
+                  All {issue.model.brand} workshops in Singapore →
+                </a>
+              );
+            })()}
           </aside>
         </div>
       </main>
