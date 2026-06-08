@@ -21,6 +21,11 @@ export default async function CarProblemPage({ params }: { params: Promise<{ slu
   const issue = getIssueBySeoSlug(slug);
   if (!issue) notFound();
   const workshops = getMatchingWorkshops(issue);
+  const allIssues = getAllIssues();
+  const sameModelIssues = allIssues.filter((i) => i.model.id === issue.model.id && i.id !== issue.id);
+  const sameBrandIssues = allIssues
+    .filter((i) => i.model.brand === issue.model.brand && i.model.id !== issue.model.id)
+    .slice(0, 6);
   const canonicalUrl = `https://workshopgowhere.com/car-problems/${getIssueSeoSlug(issue)}`;
   const jsonLd = {
     "@context": "https://schema.org",
@@ -153,6 +158,40 @@ export default async function CarProblemPage({ params }: { params: Promise<{ slu
             })()}
           </aside>
         </div>
+
+        {(sameModelIssues.length > 0 || sameBrandIssues.length > 0) && (
+          <section className="mt-10 border-t border-slate-200 pt-8 dark:border-slate-800">
+            {sameModelIssues.length > 0 && (
+              <div>
+                <h2 className="text-xl font-black">Other problems on this {issue.model.brand.replace("Mercedes-Benz", "Mercedes")} {ownerFacingModelLabel(issue.model)}</h2>
+                <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                  {sameModelIssues.map((i) => (
+                    <a key={i.id} href={`/car-problems/${getIssueSeoSlug(i)}`} className="block rounded-2xl border border-slate-200 bg-white p-4 transition hover:border-blue-400 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900 dark:hover:border-blue-500">
+                      <div className="text-sm font-black text-slate-950 dark:text-white">{i.symptom}</div>
+                      <div className="mt-2 text-xs font-semibold text-emerald-700 dark:text-emerald-300">Fair {formatRange(i.realFixPrice)} →</div>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
+            {sameBrandIssues.length > 0 && (
+              <div className="mt-8">
+                <h2 className="text-xl font-black">More {issue.model.brand.replace("Mercedes-Benz", "Mercedes")} problems owners search in Singapore</h2>
+                <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                  {sameBrandIssues.map((i) => (
+                    <a key={`${i.model.id}-${i.id}`} href={`/car-problems/${getIssueSeoSlug(i)}`} className="block rounded-2xl border border-slate-200 bg-white p-4 transition hover:border-blue-400 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900 dark:hover:border-blue-500">
+                      <div className="text-[11px] font-bold uppercase tracking-wider text-slate-500">{ownerFacingModelLabel(i.model)}</div>
+                      <div className="mt-1 text-sm font-black text-slate-950 dark:text-white">{i.symptom}</div>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
+            <a href="/workshops" className="mt-8 inline-flex rounded-2xl bg-blue-600 px-5 py-3 text-sm font-black text-white hover:bg-blue-700">
+              Browse all {issue.model.brand.replace("Mercedes-Benz", "Mercedes")} &amp; Continental workshops in Singapore →
+            </a>
+          </section>
+        )}
       </main>
     </div>
   );
