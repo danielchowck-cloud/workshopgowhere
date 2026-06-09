@@ -1,6 +1,20 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import { Fraunces, Hanken_Grotesk } from "next/font/google";
 import "./globals.css";
+
+const display = Fraunces({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "900"],
+  variable: "--font-display",
+  display: "swap",
+});
+const body = Hanken_Grotesk({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-body",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://workshopgowhere.com"),
@@ -52,7 +66,7 @@ const organizationJsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${display.variable} ${body.variable}`}>
       <body className="min-h-screen bg-slate-50 antialiased dark:bg-slate-950">
         <Script async src="https://www.googletagmanager.com/gtag/js?id=G-ZSMF6E6RVV" />
         <Script id="ga4" strategy="afterInteractive">
@@ -67,37 +81,31 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
-        <header className="border-b border-slate-200 bg-white/80 backdrop-blur-sm dark:border-slate-800 dark:bg-slate-950/80">
-          <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
-            <a href="/" className="flex items-center gap-2 text-base font-bold tracking-tight text-slate-900 dark:text-slate-100">
-              <span className="rounded-md bg-blue-600 px-2 py-0.5 text-xs font-black uppercase tracking-wider text-white">
-                WGW
+        <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-slate-50/85 backdrop-blur-md dark:border-slate-800/80 dark:bg-slate-950/85">
+          <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3.5">
+            <a href="/" className="group flex items-baseline gap-2 text-slate-900 dark:text-slate-100">
+              <span className="font-display text-xl font-semibold tracking-tight">
+                workshop<span className="text-blue-700 dark:text-blue-400">go</span>where
               </span>
-              <span>
-                workshop<span className="text-blue-600 dark:text-blue-400">go</span>where
-              </span>
-              <span className="hidden text-[10px] font-medium uppercase tracking-wider text-slate-500 sm:inline">
-                · SG
+              <span className="hidden translate-y-px text-[10px] font-bold uppercase tracking-[0.18em] text-slate-400 sm:inline dark:text-slate-500">
+                Singapore
               </span>
             </a>
-            <nav className="flex items-center gap-4 text-sm text-slate-600 dark:text-slate-400">
-              <a href="/about" className="hover:text-slate-900 dark:hover:text-white">
-                About
-              </a>
-              <a href="/workshops" className="hover:text-slate-900 dark:hover:text-white">
+            <nav className="flex items-center gap-1 text-sm font-medium text-slate-600 dark:text-slate-300">
+              <a href="/workshops" className="rounded-lg px-3 py-1.5 transition hover:bg-slate-200/60 hover:text-slate-900 dark:hover:bg-slate-800/60 dark:hover:text-white">
                 Workshops
               </a>
-              <a href="/blog" className="hover:text-slate-900 dark:hover:text-white">
-                Blog
+              <a href="/blog" className="hidden rounded-lg px-3 py-1.5 transition hover:bg-slate-200/60 hover:text-slate-900 sm:inline-flex dark:hover:bg-slate-800/60 dark:hover:text-white">
+                Guides
               </a>
-              <a href="/audit-my-quote" className="hover:text-slate-900 dark:hover:text-white">
-                Audit quote
+              <a href="/about" className="hidden rounded-lg px-3 py-1.5 transition hover:bg-slate-200/60 hover:text-slate-900 sm:inline-flex dark:hover:bg-slate-800/60 dark:hover:text-white">
+                About
               </a>
               <a
-                href="/submit"
-                className="hidden rounded-lg border border-slate-300 px-3 py-1 text-xs font-semibold hover:border-blue-500 hover:text-blue-700 dark:border-slate-700 dark:hover:border-blue-400 dark:hover:text-blue-300 sm:inline-flex"
+                href="/audit-my-quote"
+                className="ml-1 inline-flex items-center rounded-lg bg-slate-900 px-3.5 py-1.5 text-sm font-semibold text-white transition hover:bg-slate-700 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200"
               >
-                List your shop
+                Audit a quote
               </a>
             </nav>
           </div>

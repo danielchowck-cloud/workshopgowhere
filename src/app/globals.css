@@ -28,18 +28,20 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 a { color: inherit; text-decoration: none; }
 
-/* High-end automotive: sharper headings */
-h1, h2, h3 {
-  letter-spacing: -0.01em;
+/* Editorial display face for primary headlines; body sans keeps card titles clean. */
+.font-display,
+h1, h2 {
+  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+  letter-spacing: -0.015em;
 }
+h3 { letter-spacing: -0.01em; }
 
 /* Subtle horizontal rule between sections */
 .section-rule {
