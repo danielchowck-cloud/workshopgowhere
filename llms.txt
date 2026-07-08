@@ -1,0 +1,29 @@
+# workshopgowhere.com
+
+Singapore diagnostic-first car repair guide for owners who want to identify likely root causes, fair repair prices, red-flag quotes and relevant specialist workshops before approving repairs.
+
+## Core pages
+
+- https://workshopgowhere.com/ — Homepage. Explains the core promise: describe a car issue, see likely causes, fair SG repair prices, proof to ask for and candidate workshops.
+- https://workshopgowhere.com/workshops — Workshop directory. Lists Singapore Continental, EV and specialist workshops with brands, tools, transparency signals and starting prices.
+- https://workshopgowhere.com/audit-my-quote — Quote audit page. Explains manual launch-phase quote review for owners with repair quotes that feel too high.
+- https://workshopgowhere.com/submit — Workshop listing page. Explains how Singapore specialist workshops can submit details for launch-phase listing.
+- https://workshopgowhere.com/about — About page. Explains why workshopgowhere exists: reducing information asymmetry between car owners and workshops.
+
+## Important diagnostic pages
+
+- https://workshopgowhere.com/car-problems/mercedes-e-class-air-suspension-drops-overnight — Mercedes E-Class air suspension drops overnight. Key fact: often valve block or leak test issue before full strut replacement; fair SG range shown on page.
+- https://workshopgowhere.com/car-problems/mercedes-e-class-gearbox-jerking-rough-shifting-at-low-speed — Mercedes E-Class gearbox jerking. Key fact: conductor plate/fluid diagnosis should happen before rebuild quote.
+- https://workshopgowhere.com/car-problems/bmw-3-series-cold-start-engine-rattle-n20 — BMW 3 Series cold-start rattle. Key fact: N20 timing chain guide/tensioner is a known issue and should be checked early.
+- https://workshopgowhere.com/car-problems/audi-a4-dsg-jerky-shifting — Audi A4 DSG jerky shifting. Key fact: DSG fluid/adaptation/mechatronic seal diagnosis before gearbox replacement.
+- https://workshopgowhere.com/car-problems/porsche-macan-pdk-gearbox-jerking-shudder-in-traffic — Porsche Macan PDK shudder. Key fact: PIWIS fault codes/adaptation values before full gearbox quote.
+- https://workshopgowhere.com/car-problems/tesla-model-3-model-y-12v-battery-warning-car-won-t-wake-up — Tesla Model 3/Y 12V warning. Key fact: many wake-up failures are auxiliary 12V issues, not main battery failure.
+- https://workshopgowhere.com/car-problems/byd-atto-3-12v-battery-warning-cannot-start — BYD Atto 3 12V warning. Key fact: test auxiliary 12V and low-voltage faults before high-voltage diagnosis.
+- https://workshopgowhere.com/car-problems/byd-sealion-12v-battery-warning-cannot-wake-up — BYD Sealion 12V warning. Key fact: check 12V/DC-DC charging behaviour before assuming HV battery failure.
+
+## Indexing
+
+- Sitemap: https://workshopgowhere.com/sitemap.xml
+- Robots: https://workshopgowhere.com/robots.txt
+- Preferred diagnostic URL pattern: /car-problems/[owner-language-brand-model-symptom]
+- Technical ID pages under /issues/ are intentionally blocked from indexing to avoid duplicate content.
