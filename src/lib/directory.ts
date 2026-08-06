@@ -68,7 +68,12 @@ export function ownerModelName(model: string): string {
   if (model.includes("5-Series")) return "5-Series";
   if (model.includes("A4")) return "A4";
   if (model.includes("A5")) return "A5";
+  if (model.includes("A6")) return "A6";
+  if (model.includes("Q5")) return "Q5";
+  if (model.includes("Golf")) return "Golf Passat";
   if (model.includes("Cayenne")) return "Cayenne";
+  if (model.includes("Macan")) return "Macan";
+  if (model.includes("XC60")) return "XC60 XC90";
   if (model.includes("Model 3")) return "Model 3 Model Y";
   return model.replace(/^([A-Z][0-9]{2,3}|F\d+|G\d+|B\d+)\s+/g, "").replace(/\([^)]*\)/g, "").trim();
 }

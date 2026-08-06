@@ -24,6 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "bmw-workshop-singapore",
     "porsche-workshop-singapore",
     "audi-workshop-singapore",
+    "volkswagen-workshop-singapore",
     "volvo-workshop-singapore",
     "tesla-workshop-singapore",
     "byd-workshop-singapore",

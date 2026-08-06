@@ -36,6 +36,12 @@ const BRANDS: Brand[] = [
     context: "Audi shares much of its diagnostic platform with Volkswagen (ODIS, VCDS). Singapore Audi owners most often query DSG/S tronic shifting feel, EA888 engine cold-start issues and electronics on the A4, A6 and Q-series.",
   },
   {
+    slug: "volkswagen-workshop-singapore",
+    brand: "Volkswagen",
+    brandLabel: "Volkswagen",
+    context: "Volkswagen workshops in Singapore usually overlap with Audi specialists because both use ODIS and VCDS diagnostics. Golf, Passat and Tiguan owners most often search DSG judder, TSI misfire, EPC light and coolant leaks.",
+  },
+  {
     slug: "volvo-workshop-singapore",
     brand: "Volvo",
     brandLabel: "Volvo",
@@ -73,6 +79,10 @@ const BRAND_FAQS: Record<string, { q: string; a: string }[]> = {
   "Audi": [
     { q: "What diagnostic platform do Audi workshops in Singapore use?", a: "ODIS is the official Audi/Volkswagen factory tool. Many independents also use VCDS, which is a respected community-grade diagnostic platform capable of advanced coding on most VAG cars." },
     { q: "How can I tell if a DSG jerking issue is serious?", a: "DSG/S tronic shifting concerns often resolve with a mechatronic adaptation, software update or fluid service before any internal work. Ask for ODIS or VCDS log evidence before approving an overhaul." },
+  ],
+  "Volkswagen": [
+    { q: "What diagnostic tools should a Volkswagen workshop in Singapore have?", a: "ODIS is the official Volkswagen/Audi diagnostic platform, while VCDS is a strong independent diagnostic tool for VAG cars. For DSG, EPC and module faults, ask for fault-code evidence and adaptation values." },
+    { q: "Is DSG jerking always a gearbox failure?", a: "No. DSG judder or hesitation can come from adaptation, fluid condition, clutch wear or mechatronic seals before a full gearbox failure. A proper scan and road-test log should come before any overhaul quote." },
   ],
   "Volvo": [
     { q: "What diagnostic tool is used for Volvo repairs in Singapore?", a: "VIDA is the official Volvo factory platform. Independent Volvo specialists should have either VIDA or a capable equivalent that can perform module coding and adaptation, not just OBD reading." },
@@ -227,7 +237,7 @@ export default async function BrandHubPage({ params }: { params: Promise<RoutePa
               Diagnostic guides covering likely fix, fair Singapore price range, and what proof to ask the workshop for.
             </p>
             <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-              {brandIssues.slice(0, 12).map((issue) => (
+              {brandIssues.map((issue) => (
                 <li key={`${issue.model.id}-${issue.id}`}>
                   <a
                     href={`/car-problems/${getIssueSeoSlug(issue)}`}

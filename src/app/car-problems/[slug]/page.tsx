@@ -141,6 +141,7 @@ export default async function CarProblemPage({ params }: { params: Promise<{ slu
                 "BMW": "bmw-workshop-singapore",
                 "Porsche": "porsche-workshop-singapore",
                 "Audi": "audi-workshop-singapore",
+                "Volkswagen": "volkswagen-workshop-singapore",
                 "Volvo": "volvo-workshop-singapore",
                 "Tesla": "tesla-workshop-singapore",
                 "BYD": "byd-workshop-singapore",

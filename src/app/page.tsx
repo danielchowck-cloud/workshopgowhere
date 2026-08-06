@@ -178,6 +178,7 @@ export default function Home() {
               { brand: "BMW", slug: "bmw-workshop-singapore" },
               { brand: "Porsche", slug: "porsche-workshop-singapore" },
               { brand: "Audi", slug: "audi-workshop-singapore" },
+              { brand: "Volkswagen", slug: "volkswagen-workshop-singapore" },
               { brand: "Volvo", slug: "volvo-workshop-singapore" },
               { brand: "Tesla", slug: "tesla-workshop-singapore" },
               { brand: "BYD", slug: "byd-workshop-singapore" },
