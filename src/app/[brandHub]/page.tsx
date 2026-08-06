@@ -15,25 +15,25 @@ const BRANDS: Brand[] = [
     slug: "mercedes-workshop-singapore",
     brand: "Mercedes-Benz",
     brandLabel: "Mercedes-Benz",
-    context: "Mercedes-Benz is one of the most common Continental brands on Singapore roads, with the W213 E-Class, W205 C-Class, GLE and GLC making up a large share of the local prestige fleet. Common repair categories include air suspension (Airmatic), 9G-Tronic gearbox behaviour, aircon performance and MBUX electronics.",
+    context: "Mercedes-Benz is one of the most common Continental brands on Singapore roads, with C-Class, E-Class, A/CLA, GLA, GLC, GLE and S-Class models making up a large share of the local prestige fleet. Common repair categories include air suspension, dual-clutch and 9G-Tronic gearbox behaviour, aircon performance and electronics.",
   },
   {
     slug: "bmw-workshop-singapore",
     brand: "BMW",
     brandLabel: "BMW",
-    context: "BMW has a large installed base in Singapore across the F30/G20 3 Series, F10/G30 5 Series and X-series SUVs. Frequently quoted repairs involve N20/N55 cold-start rattle, timing chain symptoms, ZF 8HP gearbox feel and electronic faults.",
+    context: "BMW has a large installed base in Singapore across the F30/G20 3 Series, F10/G30 5 Series and X1/X3/X5 SUVs. Frequently quoted repairs involve N20/N55 cold-start rattle, timing chain symptoms, ZF 8HP gearbox feel, xDrive vibration and electronic faults.",
   },
   {
     slug: "porsche-workshop-singapore",
     brand: "Porsche",
     brandLabel: "Porsche",
-    context: "Porsche workshops in Singapore are usually equipped with PIWIS diagnostics. The most-serviced Porsche models locally are the Macan and Cayenne, with PDK gearbox behaviour, coolant system and air suspension being typical service areas.",
+    context: "Porsche workshops in Singapore are usually equipped with PIWIS diagnostics. The most-serviced Porsche models locally include Macan, Cayenne, 911, Panamera and Boxster/Cayman, with PDK gearbox behaviour, coolant system, transfer case and air suspension being typical service areas.",
   },
   {
     slug: "audi-workshop-singapore",
     brand: "Audi",
     brandLabel: "Audi",
-    context: "Audi shares much of its diagnostic platform with Volkswagen (ODIS, VCDS). Singapore Audi owners most often query DSG/S tronic shifting feel, EA888 engine cold-start issues and electronics on the A4, A6 and Q-series.",
+    context: "Audi shares much of its diagnostic platform with Volkswagen (ODIS, VCDS). Singapore Audi owners most often query DSG/S tronic shifting feel, EA888 engine issues, coolant leaks, air suspension and electronics across A3, A4/A5, A6, Q3, Q5 and Q7.",
   },
   {
     slug: "volkswagen-workshop-singapore",
@@ -45,19 +45,19 @@ const BRANDS: Brand[] = [
     slug: "volvo-workshop-singapore",
     brand: "Volvo",
     brandLabel: "Volvo",
-    context: "Volvo workshops in Singapore typically run VIDA diagnostics. The XC60 and XC90 dominate the local Volvo fleet, with common service queries around aircon performance, coolant and electronics.",
+    context: "Volvo workshops in Singapore typically run VIDA diagnostics. XC40, XC60, XC90, S60, S90, V60 and V90 models are represented locally, with common service queries around aircon performance, coolant leaks, mounts, batteries and electronics.",
   },
   {
     slug: "tesla-workshop-singapore",
     brand: "Tesla",
     brandLabel: "Tesla",
-    context: "Tesla has only the Model 3 and Model Y in volume in Singapore. Independent EV-capable workshops are still limited — the most frequent service queries involve 12V battery warnings, high-voltage system handling and tyre wear patterns.",
+    context: "Tesla volume in Singapore is led by Model 3 and Model Y, with Model S and Model X also present in the used and parallel-import market. Independent EV-capable workshops are still limited, and common queries involve 12V battery warnings, air suspension, aircon, tyres and high-voltage safety.",
   },
   {
     slug: "byd-workshop-singapore",
     brand: "BYD",
     brandLabel: "BYD",
-    context: "BYD has become Singapore's fastest-growing EV brand, led by the Atto 3, Sealion and Dolphin. Service queries are dominated by 12V battery warnings, software issues and EV-specific drivetrain checks.",
+    context: "BYD has become Singapore's fastest-growing EV brand, led by Atto 3, Sealion, Dolphin and Seal. Service queries are dominated by 12V battery warnings, charging interruptions, software issues, aircon performance and tyre wear on heavier EV platforms.",
   },
 ];
 
@@ -75,10 +75,12 @@ const BRAND_FAQS: Record<string, { q: string; a: string }[]> = {
   "Porsche": [
     { q: "What diagnostic tool is used for Porsche repairs?", a: "PIWIS is the official Porsche factory diagnostic system. A workshop without PIWIS will struggle with coding, adaptation and many Porsche-specific service procedures, even if it can read basic fault codes." },
     { q: "Is the PDK gearbox in a Porsche Macan reliable?", a: "The PDK in the Macan is generally robust, but jerking or shudder in traffic is often misdiagnosed as a full mechatronic failure. Ask for a PIWIS scan and clutch wear values before approving major work." },
+    { q: "Which Porsche models are covered here?", a: "Coverage now includes Cayenne, Macan, 911, Panamera and Boxster/Cayman problem pages, with emphasis on PIWIS-backed diagnosis before expensive gearbox, suspension or coolant-system repairs." },
   ],
   "Audi": [
     { q: "What diagnostic platform do Audi workshops in Singapore use?", a: "ODIS is the official Audi/Volkswagen factory tool. Many independents also use VCDS, which is a respected community-grade diagnostic platform capable of advanced coding on most VAG cars." },
     { q: "How can I tell if a DSG jerking issue is serious?", a: "DSG/S tronic shifting concerns often resolve with a mechatronic adaptation, software update or fluid service before any internal work. Ask for ODIS or VCDS log evidence before approving an overhaul." },
+    { q: "Which Audi models are covered here?", a: "Coverage now includes A3, A4/A5, A6, Q3, Q5 and Q7 pages, reflecting the sedan and SUV models commonly seen in Singapore workshop searches." },
   ],
   "Volkswagen": [
     { q: "What diagnostic tools should a Volkswagen workshop in Singapore have?", a: "ODIS is the official Volkswagen/Audi diagnostic platform, while VCDS is a strong independent diagnostic tool for VAG cars. For DSG, EPC and module faults, ask for fault-code evidence and adaptation values." },
@@ -87,12 +89,15 @@ const BRAND_FAQS: Record<string, { q: string; a: string }[]> = {
   ],
   "Volvo": [
     { q: "What diagnostic tool is used for Volvo repairs in Singapore?", a: "VIDA is the official Volvo factory platform. Independent Volvo specialists should have either VIDA or a capable equivalent that can perform module coding and adaptation, not just OBD reading." },
+    { q: "Which Volvo models are covered here?", a: "Coverage now includes XC40, XC60, XC90, S60, S90, V60 and V90 pages, with common Singapore concerns around aircon, coolant, mount vibration, electronics and 12V battery warnings." },
   ],
   "Tesla": [
     { q: "Can independent workshops in Singapore service Teslas?", a: "Independent Tesla service is limited in Singapore. Tesla-authorised service centres handle most software, battery and drivetrain work. Independents are useful for tyres, wheel alignment, brakes and accessories." },
+    { q: "Which Tesla models are covered here?", a: "Coverage now includes Model 3, Model Y, Model S and Model X pages, with practical checks around 12V battery warnings, aircon, suspension noise, tyre wear and air suspension." },
   ],
   "BYD": [
     { q: "Where can I service a BYD Atto 3 or Sealion in Singapore?", a: "The Vantage Automotive network is the official BYD service partner in Singapore. A small number of independent EV-capable workshops also handle non-warranty work — generally limited to consumables, tyres, alignment and 12V battery." },
+    { q: "Which BYD models are covered here?", a: "Coverage now includes Atto 3, Sealion, Dolphin and Seal pages, focusing on 12V battery, charging, aircon and tyre/alignment issues that owners are likely to search first." },
   ],
 };
 
