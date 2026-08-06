@@ -21,7 +21,7 @@ export default function About() {
 
         <h2>Phase 1 — Continental & EV specialists</h2>
         <p>
-          We&apos;re launching with Mercedes, BMW, Audi, VW, Volvo, Porsche, and Tesla / EV
+          We&apos;re launching with Mercedes, BMW, Audi, VW, Volvo, Porsche, Alfa Romeo, Land Rover, Jaguar, MINI, Maserati, and Tesla / EV
           owners. Why this niche? These cars have:
         </p>
         <ul>
@@ -35,7 +35,7 @@ export default function About() {
           Workshops are ranked by <strong>technical competence</strong>, not just stars. We check:
         </p>
         <ul>
-          <li><strong>Brand-specific tooling</strong>: ISTA (BMW), Star Diagnostic / XENTRY (Mercedes), ODIS / VCDS (VW/Audi), PIWIS (Porsche), VIDA (Volvo), Tesla Toolbox</li>
+          <li><strong>Brand-specific tooling</strong>: ISTA (BMW/MINI), Star Diagnostic / XENTRY (Mercedes), ODIS / VCDS (VW/Audi), PIWIS (Porsche), VIDA (Volvo), JLR SDD / Pathfinder (Jaguar/Land Rover), Tesla Toolbox</li>
           <li><strong>Component mastery</strong>: which specific repairs they&apos;re known for (gearbox rebuild, mechatronics, air suspension, etc.)</li>
           <li><strong>Parts tier</strong>: OEM / OEM+aftermarket / aftermarket-only — owner choice</li>
           <li><strong>&quot;Agent-Alternative&quot; tier</strong>: shops that match dealership quality at independent prices using parts like Lemförder, Bilstein, ATE</li>

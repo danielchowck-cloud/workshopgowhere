@@ -20,7 +20,7 @@ const COMMON_BRANDS = [
   "Toyota","Honda","Nissan","Mazda","Mitsubishi","Subaru",
   "Mercedes-Benz","BMW","Audi","Volkswagen","Volvo",
   "Hyundai","Kia",
-  "Lexus","Land Rover","Mclaren","Porsche",
+  "Lexus","Alfa Romeo","Land Rover","Jaguar","MINI","Maserati","Mclaren","Porsche",
   "Tesla","BYD","Hyundai EV",
 ];
 
@@ -35,7 +35,7 @@ export function SearchAndGrid() {
 
     // Filter / boost by car brand
     if (carBrand) {
-      const isContinental = ["Mercedes-Benz","BMW","Audi","Volkswagen","Volvo","Land Rover","Porsche","Mclaren"].includes(carBrand);
+      const isContinental = ["Mercedes-Benz","BMW","Audi","Volkswagen","Volvo","Alfa Romeo","Land Rover","Jaguar","MINI","Maserati","Porsche","Mclaren"].includes(carBrand);
       const isEV = ["Tesla","BYD","Hyundai EV"].includes(carBrand);
       r = r
         .map((l) => {

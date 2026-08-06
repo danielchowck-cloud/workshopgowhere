@@ -15,31 +15,61 @@ const BRANDS: Brand[] = [
     slug: "mercedes-workshop-singapore",
     brand: "Mercedes-Benz",
     brandLabel: "Mercedes-Benz",
-    context: "Mercedes-Benz is one of the most common Continental brands on Singapore roads, with C-Class, E-Class, A/CLA, GLA, GLC, GLE and S-Class models making up a large share of the local prestige fleet. Common repair categories include air suspension, dual-clutch and 9G-Tronic gearbox behaviour, aircon performance and electronics.",
+    context: "Mercedes-Benz is one of the most common Continental brands on Singapore roads, with A/CLA, B-Class, C-Class, E-Class, CLS, GLA, GLC, GLE, S-Class and V-Class models represented. Common repair categories include air suspension, dual-clutch and 9G-Tronic gearbox behaviour, aircon performance and electronics.",
   },
   {
     slug: "bmw-workshop-singapore",
     brand: "BMW",
     brandLabel: "BMW",
-    context: "BMW has a large installed base in Singapore across the F30/G20 3 Series, F10/G30 5 Series and X1/X3/X5 SUVs. Frequently quoted repairs involve N20/N55 cold-start rattle, timing chain symptoms, ZF 8HP gearbox feel, xDrive vibration and electronic faults.",
+    context: "BMW has a large installed base in Singapore across 1/2-Series, 3-Series, 4-Series, 5-Series, 7-Series and X1/X3/X5 SUVs. Frequently quoted repairs involve N20/N55 cold-start rattle, timing chain symptoms, ZF 8HP gearbox feel, xDrive vibration, air suspension and electronic faults.",
   },
   {
     slug: "porsche-workshop-singapore",
     brand: "Porsche",
     brandLabel: "Porsche",
-    context: "Porsche workshops in Singapore are usually equipped with PIWIS diagnostics. The most-serviced Porsche models locally include Macan, Cayenne, 911, Panamera and Boxster/Cayman, with PDK gearbox behaviour, coolant system, transfer case and air suspension being typical service areas.",
+    context: "Porsche workshops in Singapore are usually equipped with PIWIS diagnostics. The most-serviced Porsche models locally include Macan, Cayenne, 911, Panamera, Boxster/Cayman and Taycan, with PDK gearbox behaviour, coolant system, transfer case, air suspension and EV charging being typical service areas.",
   },
   {
     slug: "audi-workshop-singapore",
     brand: "Audi",
     brandLabel: "Audi",
-    context: "Audi shares much of its diagnostic platform with Volkswagen (ODIS, VCDS). Singapore Audi owners most often query DSG/S tronic shifting feel, EA888 engine issues, coolant leaks, air suspension and electronics across A3, A4/A5, A6, Q3, Q5 and Q7.",
+    context: "Audi shares much of its diagnostic platform with Volkswagen (ODIS, VCDS). Singapore Audi owners most often query DSG/S tronic shifting feel, EA888 engine issues, coolant leaks, air suspension and electronics across A3, A4/A5, A6, A7, A8, TT, Q3, Q5 and Q7.",
   },
   {
     slug: "volkswagen-workshop-singapore",
     brand: "Volkswagen",
     brandLabel: "Volkswagen",
-    context: "Volkswagen workshops in Singapore usually overlap with Audi specialists because both use ODIS and VCDS diagnostics. Golf, Passat, Tiguan, Touran, Sharan, Jetta, Polo and Scirocco owners most often search DSG judder, TSI misfire, EPC light, coolant leaks and aircon issues.",
+    context: "Volkswagen workshops in Singapore usually overlap with Audi specialists because both use ODIS and VCDS diagnostics. Golf, Passat, Tiguan, Touran, Sharan, Jetta, Polo, Scirocco, Beetle, Touareg, T-Cross/T-Roc and Arteon owners most often search DSG judder, TSI misfire, EPC light, coolant leaks and aircon issues.",
+  },
+  {
+    slug: "alfa-romeo-workshop-singapore",
+    brand: "Alfa Romeo",
+    brandLabel: "Alfa Romeo",
+    context: "Alfa Romeo ownership in Singapore is niche but repair-sensitive, especially for Giulia, Stelvio, Giulietta and MiTo owners. Common searches involve electrical warnings, TCT gearbox behaviour, MultiAir or misfire symptoms, coolant leaks and suspension knocks.",
+  },
+  {
+    slug: "land-rover-workshop-singapore",
+    brand: "Land Rover",
+    brandLabel: "Land Rover",
+    context: "Land Rover and Range Rover models need JLR-capable diagnostics. Singapore owners commonly search for Evoque, Discovery Sport and Range Rover Sport issues around coolant leaks, DPF/EGR warnings, gearbox behaviour and air suspension faults.",
+  },
+  {
+    slug: "jaguar-workshop-singapore",
+    brand: "Jaguar",
+    brandLabel: "Jaguar",
+    context: "Jaguar shares much of its diagnostic stack with Land Rover. Singapore owner searches commonly involve XE, XF, F-Pace, E-Pace and F-Type issues around coolant leaks, low-voltage electrical warnings, ZF gearbox behaviour and suspension noise.",
+  },
+  {
+    slug: "mini-workshop-singapore",
+    brand: "MINI",
+    brandLabel: "MINI",
+    context: "MINI is BMW-group under the skin, so ISTA-capable workshops are useful. Singapore MINI Cooper, Countryman and Clubman owners commonly search engine mount vibration, coolant leaks, ALL4 drivetrain shudder, aircon and door/latch issues.",
+  },
+  {
+    slug: "maserati-workshop-singapore",
+    brand: "Maserati",
+    brandLabel: "Maserati",
+    context: "Maserati ownership in Singapore is niche but repair quotes can escalate quickly. Ghibli, Quattroporte and Levante owners commonly search electrical warnings, battery drain, suspension faults, oil leaks and air suspension issues.",
   },
   {
     slug: "volvo-workshop-singapore",
@@ -80,12 +110,32 @@ const BRAND_FAQS: Record<string, { q: string; a: string }[]> = {
   "Audi": [
     { q: "What diagnostic platform do Audi workshops in Singapore use?", a: "ODIS is the official Audi/Volkswagen factory tool. Many independents also use VCDS, which is a respected community-grade diagnostic platform capable of advanced coding on most VAG cars." },
     { q: "How can I tell if a DSG jerking issue is serious?", a: "DSG/S tronic shifting concerns often resolve with a mechatronic adaptation, software update or fluid service before any internal work. Ask for ODIS or VCDS log evidence before approving an overhaul." },
-    { q: "Which Audi models are covered here?", a: "Coverage now includes A3, A4/A5, A6, Q3, Q5 and Q7 pages, reflecting the sedan and SUV models commonly seen in Singapore workshop searches." },
+    { q: "Which Audi models are covered here?", a: "Coverage now includes A3, A4/A5, A6, A7, A8, TT, Q3, Q5 and Q7 pages, reflecting the sedan, coupe and SUV models commonly seen in Singapore workshop searches." },
   ],
   "Volkswagen": [
     { q: "What diagnostic tools should a Volkswagen workshop in Singapore have?", a: "ODIS is the official Volkswagen/Audi diagnostic platform, while VCDS is a strong independent diagnostic tool for VAG cars. For DSG, EPC and module faults, ask for fault-code evidence and adaptation values." },
     { q: "Is DSG jerking always a gearbox failure?", a: "No. DSG judder or hesitation can come from adaptation, fluid condition, clutch wear or mechatronic seals before a full gearbox failure. A proper scan and road-test log should come before any overhaul quote." },
     { q: "Which Volkswagen models are common in Singapore?", a: "Besides Golf and Passat, Singapore owners commonly search for Tiguan, Touran, Sharan, Jetta, Polo, Scirocco and Beetle repair issues. Newer official models such as T-Cross and the ID range should be added as their local repair patterns become clearer." },
+  ],
+  "Alfa Romeo": [
+    { q: "What should an Alfa Romeo workshop be able to diagnose?", a: "It should be comfortable with Alfa-compatible diagnostics, battery and low-voltage checks, TCT gearbox values, MultiAir-related symptoms, misfire data and suspension inspection." },
+    { q: "Why do Alfa Romeo quotes vary so much?", a: "Parts availability and diagnostic familiarity vary widely. Ask for fault codes, test values and proof of the failed part before approving expensive electrical, gearbox or engine work." },
+  ],
+  "Land Rover": [
+    { q: "What diagnostic tool should a Land Rover workshop have?", a: "A proper Land Rover workshop should have JLR SDD or Pathfinder capability, especially for air suspension, DPF/EGR, gearbox adaptation and module faults." },
+    { q: "Is Land Rover air suspension always expensive?", a: "Not always. A leak may be one strut, line, valve block or compressor issue. Ask for leak-test proof and level-control data before approving multi-corner replacement." },
+  ],
+  "Jaguar": [
+    { q: "Do Jaguar workshops use the same tools as Land Rover?", a: "Often yes. Jaguar and Land Rover share JLR diagnostic platforms, so JLR SDD/Pathfinder capability matters for XE, XF, F-Pace, E-Pace and F-Type faults." },
+    { q: "What should I ask before approving a Jaguar gearbox quote?", a: "Ask for JLR fault codes, fluid/service history, adaptation values and mount inspection before approving a full gearbox replacement." },
+  ],
+  "MINI": [
+    { q: "Can BMW specialists work on MINI?", a: "Many can, because MINI is BMW-group and ISTA diagnostics are useful. Still ask whether the shop has experience with your MINI generation and engine family." },
+    { q: "What are common MINI repair quote traps?", a: "Mount vibration, coolant leaks and ALL4 shudder can be over-quoted as gearbox or engine failure. Ask for lifted inspection, pressure-test results and ISTA scan data." },
+  ],
+  "Maserati": [
+    { q: "Why are Maserati repair quotes so high?", a: "Parts cost and limited specialist familiarity can push quotes up quickly. Ask for diagnostic proof and consider a second opinion before approving suspension, electrical or engine-leak work." },
+    { q: "What should a Maserati specialist be able to show?", a: "They should show fault codes, battery/sleep-current data for electrical issues, suspension scan data, and photos or pressure-test proof for coolant and oil leaks." },
   ],
   "Volvo": [
     { q: "What diagnostic tool is used for Volvo repairs in Singapore?", a: "VIDA is the official Volvo factory platform. Independent Volvo specialists should have either VIDA or a capable equivalent that can perform module coding and adaptation, not just OBD reading." },

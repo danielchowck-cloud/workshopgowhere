@@ -2,13 +2,13 @@ import { WorkshopDirectory } from "@/components/WorkshopDirectory";
 import { listings } from "@/data/listings";
 
 export const metadata = {
-  title: "Continental Car Workshops Singapore — Mercedes, BMW, Audi",
-  description: "42 Mercedes-Benz, BMW, Audi, Porsche, Volvo and Tesla specialist workshops across Singapore. Compare by region, brand, diagnostic tools and quote transparency before you book.",
+  title: "Continental Car Workshops Singapore — Mercedes, BMW, Audi & More",
+  description: "Continental and EV specialist workshops across Singapore. Compare by region, brand, diagnostic tools and quote transparency before you book.",
   alternates: { canonical: "/workshops" },
 };
 
 const focusListings = listings.filter((shop) =>
-  shop.brands?.some((brand) => ["Mercedes-Benz", "BMW", "Audi", "Volkswagen", "Porsche", "Volvo", "Tesla", "BYD", "BYD Atto 3", "BYD Sealion"].includes(brand)),
+  shop.brands?.some((brand) => ["Mercedes-Benz", "BMW", "Audi", "Volkswagen", "Porsche", "Volvo", "Alfa Romeo", "Land Rover", "Jaguar", "MINI", "Maserati", "Tesla", "BYD", "BYD Atto 3", "BYD Sealion"].includes(brand)),
 );
 
 const REGIONS = [
@@ -38,7 +38,7 @@ const faqs = [
   },
   {
     q: "What brands do these workshops specialise in?",
-    a: "Mercedes-Benz, BMW, Audi, Volkswagen, Porsche and Volvo on the Continental side, plus Tesla and BYD for EVs. Use the brand and region filters to narrow to specialists for your car.",
+    a: "Mercedes-Benz, BMW, Audi, Volkswagen, Porsche, Volvo, Alfa Romeo, Land Rover, Jaguar, MINI and Maserati on the Continental side, plus Tesla and BYD for EVs. Use the brand and region filters to narrow to specialists for your car.",
   },
 ];
 
@@ -62,7 +62,7 @@ export default function WorkshopsPage() {
             <p className="text-xs font-black uppercase tracking-[0.2em] text-blue-700 dark:text-blue-300">Workshop directory</p>
             <h1 className="mt-3 max-w-3xl text-3xl font-black tracking-tight sm:text-5xl">Mercedes, BMW, Audi &amp; Continental car workshops in Singapore.</h1>
             <p className="mt-4 max-w-2xl text-slate-700 dark:text-slate-300">
-              {focusListings.length} specialist workshops for Mercedes-Benz, BMW, Audi, Porsche, Volvo, Tesla and BYD owners, across {regionCounts.length} regions of Singapore. Compare by region, brand, diagnostic tooling and quote transparency before you book — so you can pick a shop that proves the diagnosis instead of guessing parts.
+              {focusListings.length} specialist workshops for Mercedes-Benz, BMW, Audi, Volkswagen, Porsche, Volvo, Land Rover, Jaguar, MINI, Tesla and BYD owners, across {regionCounts.length} regions of Singapore. Compare by region, brand, diagnostic tooling and quote transparency before you book — so you can pick a shop that proves the diagnosis instead of guessing parts.
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
               {regionCounts.map((r) => (

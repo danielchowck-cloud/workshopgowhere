@@ -20,11 +20,16 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://workshopgowhere.com"),
   title: "workshopgowhere — Smart Diagnostic Marketplace for European Cars in SG",
   description:
-    "Smart symptom search for Mercedes, BMW, Audi, Porsche, Volvo, Tesla owners in Singapore. Pick your model, pick your symptom — get the diagnostic tip + verified specialist + market-fair price. Don't fall for the agent trap.",
+    "Smart symptom search for Mercedes, BMW, Audi, Volkswagen, Porsche, Volvo, Alfa Romeo, Land Rover, Jaguar, MINI, Maserati, Tesla and BYD owners in Singapore. Pick your model, symptom and fair repair range before approving a quote.",
   keywords: [
     "Mercedes specialist singapore",
     "BMW specialist sg",
     "Audi specialist sg",
+    "Alfa Romeo specialist singapore",
+    "Land Rover specialist singapore",
+    "Jaguar specialist singapore",
+    "MINI specialist singapore",
+    "Maserati specialist singapore",
     "Continental car repair singapore",
     "agent alternative workshop sg",
     "Mercedes E-Class rear sinks overnight",
