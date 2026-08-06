@@ -39,7 +39,7 @@ const BRANDS: Brand[] = [
     slug: "volkswagen-workshop-singapore",
     brand: "Volkswagen",
     brandLabel: "Volkswagen",
-    context: "Volkswagen workshops in Singapore usually overlap with Audi specialists because both use ODIS and VCDS diagnostics. Golf, Passat and Tiguan owners most often search DSG judder, TSI misfire, EPC light and coolant leaks.",
+    context: "Volkswagen workshops in Singapore usually overlap with Audi specialists because both use ODIS and VCDS diagnostics. Golf, Passat, Tiguan, Touran, Sharan, Jetta, Polo and Scirocco owners most often search DSG judder, TSI misfire, EPC light, coolant leaks and aircon issues.",
   },
   {
     slug: "volvo-workshop-singapore",
@@ -83,6 +83,7 @@ const BRAND_FAQS: Record<string, { q: string; a: string }[]> = {
   "Volkswagen": [
     { q: "What diagnostic tools should a Volkswagen workshop in Singapore have?", a: "ODIS is the official Volkswagen/Audi diagnostic platform, while VCDS is a strong independent diagnostic tool for VAG cars. For DSG, EPC and module faults, ask for fault-code evidence and adaptation values." },
     { q: "Is DSG jerking always a gearbox failure?", a: "No. DSG judder or hesitation can come from adaptation, fluid condition, clutch wear or mechatronic seals before a full gearbox failure. A proper scan and road-test log should come before any overhaul quote." },
+    { q: "Which Volkswagen models are common in Singapore?", a: "Besides Golf and Passat, Singapore owners commonly search for Tiguan, Touran, Sharan, Jetta, Polo, Scirocco and Beetle repair issues. Newer official models such as T-Cross and the ID range should be added as their local repair patterns become clearer." },
   ],
   "Volvo": [
     { q: "What diagnostic tool is used for Volvo repairs in Singapore?", a: "VIDA is the official Volvo factory platform. Independent Volvo specialists should have either VIDA or a capable equivalent that can perform module coding and adaptation, not just OBD reading." },

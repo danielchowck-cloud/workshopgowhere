@@ -71,6 +71,12 @@ export function ownerModelName(model: string): string {
   if (model.includes("A6")) return "A6";
   if (model.includes("Q5")) return "Q5";
   if (model.includes("Golf")) return "Golf Passat";
+  if (model.includes("Tiguan")) return "Tiguan";
+  if (model.includes("Touran")) return "Touran Sharan";
+  if (model.includes("Jetta")) return "Jetta";
+  if (model.includes("Polo")) return "Polo Vento";
+  if (model.includes("Scirocco")) return "Scirocco";
+  if (model.includes("Beetle")) return "Beetle";
   if (model.includes("Cayenne")) return "Cayenne";
   if (model.includes("Macan")) return "Macan";
   if (model.includes("XC60")) return "XC60 XC90";
